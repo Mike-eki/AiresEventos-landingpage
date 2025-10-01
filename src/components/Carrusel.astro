@@ -1,0 +1,228 @@
+---
+
+---
+
+<nav class="scroll-layout">
+  <menu class="carousel">
+    <ul class="content">
+        <article class="card">
+            <picture class="image-frame">
+                <img src="images/card-1.jpg" alt="Foto de decoración del salon">
+            </picture>
+            </footer>
+        </article>
+        <article class="card">
+            <picture class="image-frame">
+                <img src="images/card-2.jpg" alt="Foto de decoración del salon">
+            </picture>
+        </article>
+        <article class="card">
+            <picture class="image-frame">
+                <img src="images/card-3.jpg" alt="Foto de decoración del salon">
+            </picture>
+        </article>
+        <article class="card">
+            <picture class="image-frame">
+                <img src="images/card-4.jpg" alt="Foto de decoración del salon">
+            </picture>
+        </article>
+        <article class="card">
+            <picture class="image-frame">
+                <img src="images/card-5.jpg" alt="Foto de decoración del salon">
+            </picture>
+        </article>
+    </ul>
+  </menu>
+</nav>
+
+<style>
+
+/* SCROLLER */
+/* horizontal scroll snap */
+.carousel {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+
+  scrollbar-color: #42d66e;
+  
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+  
+  /* snap to start */  
+  & .card {
+    scroll-snap-align: start;
+  }
+}
+
+/* Estilos para navegadores basados en WebKit (Chrome, Edge, Safari) */
+.carousel::-webkit-scrollbar {
+    height: 1rem;                   /* grosor de la barra horizontal */
+    background: transparent;           /* fondo de la pista */
+}
+
+/* “thumb” es la parte que se arrastra */
+.carousel::-webkit-scrollbar-thumb {
+    background: var(--violet-gum);           /* color del pulgar */
+    border-radius: 6px;            /* bordes redondeados */
+    border: 2px solid transparent;     /* espacio entre pulgar y pista */
+}
+
+
+/* SCROLL BUTTONS */
+/* create buttons by selecting them and adding content */
+.carousel {
+  &::scroll-button(*) {
+    /* make them round and easy to press */
+    inline-size: 48px;
+    aspect-ratio: 1;
+    border-radius: 1e3px;
+    border: 2px solid rgba(153, 153, 153, 0.5);
+    background-color: rgba(255, 255, 255, 0.3);
+    
+    /* space from content */
+    margin: 5px;
+  }
+  
+  &::scroll-button(*):focus-visible {
+    outline-offset: 5px;
+  }
+  
+  &::scroll-button(*):not(:disabled):is(:hover, :active) {
+    background-color: rgba(255, 255, 255);
+  }
+  
+  &::scroll-button(*):not(:disabled):active {
+    scale: 90%;
+  }
+
+  &::scroll-button(*):is(:disabled) {
+    display: none;
+  }
+  
+  
+  &::scroll-button(left) {
+    position: absolute;
+    top: 30%;
+    transform: translate(0, 50%);
+    background-color: var(--violet-gum);
+    background-image: url('svg/arrow-left.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* content:  url('svg/arrow-left.svg') / "⬅" / "Scroll Left"; */
+    content: ""
+    /* grid-area: center; place markers in parent grid area */
+  }
+  
+  &::scroll-button(right) {
+    position: absolute;
+    right: 0;
+    top: 30%;
+    transform: translate(0, 50%);
+    background-color: var(--violet-gum);
+    background-image: url('svg/arrow-right.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* content: url('svg/arrow-right.svg') / "⮕" / "Scroll Right"; */
+    content: "";
+    /* grid-area: right; */
+  }
+}
+
+
+
+
+/* SCROLL MARKERS */
+/* create marker group */
+/* create markers for each item */
+.carousel {
+  /* create markers 'after' scroller */
+  scroll-marker-group: after;
+
+  /* create markers container and own dots layout */
+  &::scroll-marker-group {
+    grid-area: markers; /* place markers in parent grid area */
+    
+    /* 15px by 15px horizontal grid - size of dots */
+    display: grid;
+    place-content: safe center;
+    grid: 30px / auto-flow 30px;
+    gap: 15px;
+    padding: 15px;
+    scroll-padding: 15px;
+    
+    /* handle overflow */
+    overflow: auto;
+    overscroll-behavior-x: contain;
+    scrollbar-width: auto;
+    scroll-snap-type: x mandatory;
+    
+    @media (prefers-reduced-motion: no-preference) {
+      scroll-behavior: smooth;
+    }
+  }
+
+}
+
+  .scroll-layout {
+    background-color: var(--light-beige);
+    position: relative;
+    display: grid;
+    /* border: 1px dashed gray; */
+    
+    /* try a different layout =) */
+    grid-template-areas: 
+      "left scroll right"
+      ". markers .";
+    
+    /* just place items in the grid */
+    grid-template-areas: 
+      "scroll scroll scroll"
+      "left markers right";
+    
+    grid-template-columns: auto 1fr auto;
+
+    .carousel {
+      grid-area: scroll;
+    }
+  }
+  
+  .carousel {
+    overscroll-behavior-x: contain;
+    scroll-behavior: smooth;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: nowrap;
+
+    gap: var(--element-horizontal-space);
+    padding: 0;
+    margin: 0;
+
+  }
+
+
+.card {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin-inline: 1rem;
+    margin-bottom: 1rem;
+}
+.image-frame {
+    display: block;
+    overflow: hidden;
+    border-radius: 50rem 50rem 0 0;
+    aspect-ratio: 9/16;
+}
+.image-frame img, .image-frame source {
+    display: block;
+    aspect-ratio: 9/16;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+</style>

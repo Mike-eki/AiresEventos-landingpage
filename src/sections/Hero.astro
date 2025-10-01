@@ -1,0 +1,113 @@
+---
+import ArrowDown from '../icons/ArrowDown.astro';
+---
+
+<section>
+    <div class="circle-container">
+        <svg viewBox="0 0 100 100">
+            <defs>
+                <path id="circle" d="
+                    M 50, 50
+                    m -37, 0
+                    a 37,37 0 1,1 74,0
+                    a 37,37 0 1,1 -74,0"
+                />
+            </defs>
+            <text 
+                textLength="230"
+                lengthAdjust="spacingAndGlyphs"
+            >
+                 <textPath href="#circle" >
+                    Donde los momentos cobran vida • Donde los momentos cobran vida •
+                </textPath>
+            </text>
+        </svg>
+    </div>
+    <button><ArrowDown /></button>
+    <video autoplay muted loop>
+        <source src="videos/hero_video.mp4" type="video/mp4" />
+    </video>
+</section>
+
+<style>
+    section {
+        position: relative;
+    }
+    .circle-container {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 12rem;
+        height: 12rem;
+
+        z-index: 15;
+    }
+    svg {
+        shape-rendering: geometricPrecision;
+
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: center;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    text {
+        will-change: transform;
+        transform: translateZ(0);   /* crea una capa propia */
+        text-rendering: optimizeLegibility;
+
+
+        animation: rotate 20s linear infinite;
+        transform-origin: 50% 50%;
+        fill: var(--light-beige);
+        font-family: var(--font-switzer-light);
+        font-size: 6px;
+    }
+
+    button {
+        position: absolute;
+        top: 80%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        border-radius: 10rem;
+        border: none;
+        width: 4rem;
+        height: 6.5rem;
+        cursor: pointer;
+
+        z-index: 20;
+    }
+
+    video {
+        display: block;
+
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+
+        margin: 0;
+        padding: 0;
+
+        object-fit: cover;
+        z-index: 10;
+    }
+</style>
+
+<script>
+import gsap from "gsap";
+
+    // gsap.to("h1", { duration: 1, x: 100 });
+</script>

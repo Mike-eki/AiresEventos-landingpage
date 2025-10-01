@@ -1,0 +1,76 @@
+<section>
+    <figure>
+        <img class="logo" src="images/logo_as_black.png" alt="Logo de Aires Eventos">
+    </figure>
+    <picture>
+        <img class="img-1" src="images/intro-images-1.jpg" alt="Foto de decoración del salon">
+        <img class="img-2" src="images/intro-images-2.jpg" alt="Foto de decoración del salon">
+        <img class="img-3" src="images/intro-images-3.jpg" alt="Foto de decoración del salon">
+        <img class="img-4" src="images/intro-images-4.jpg" alt="Foto de decoración del salon">
+    </picture>
+</section>
+
+
+<style>
+    section {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+        background-color: var(--light-beige);
+
+        width: 100%;
+    }
+
+    figure {
+        margin: 0;
+        padding: 0;
+
+        width: 6rem;
+
+        position: absolute;
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 10;
+    }
+    .logo {
+        display: block;
+        max-width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    picture {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    img:not(.logo) {
+        /* position: absolute; */
+
+        display: block;
+        max-width: 100%;
+        aspect-ratio: 16/9;
+        height: auto;
+        object-fit: cover;
+    }
+    .img-1 {
+        border-radius: 0 0 20rem 0;
+        
+    }
+    .img-2 {
+        border-radius: 0 0 0 20rem;
+        
+    }
+    .img-3 {
+        border-radius: 0 20rem 0 0;
+        
+    }
+    .img-4 {
+        border-radius: 20rem 0 0 0;
+        
+    }
+
+</style>
