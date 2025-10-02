@@ -1,0 +1,147 @@
+<section class="xv-section">
+    <header class="xv-main">
+        <h2 class="title-top">XV</h2>
+        <h2 class="title-bottom">AÑOS</h2>
+        <picture class="frame">
+            <img src="images/xv-main.jpg" alt="Foto de pareja de novios sonriendo en su boda">
+        </picture>
+    </header>
+
+    <picture class="gallery">
+        <img class="top-left" src="images/xv-1.jpeg" alt="Foto de pareja de novios en su boda">
+        <img class="top-right" src="images/xv-2.png" alt="Foto de pareja de novios en su boda">
+        <img class="bottom-left" src="images/xv-3.jpg" alt="Foto de pareja de novios en su boda">
+        <img class="bottom-right" src="images/xv-4.png" alt="Foto de pareja de novios en su boda">
+    </picture>
+    
+    <footer class="xv-text">
+        <hgroup>
+            <p>Cumplir XV es único. Nuestro espacio está pensado para que tu gran noche sea tal como la imaginaste.</p>
+        </hgroup>
+    </footer>
+</section>
+
+
+<style>
+    .xv-section {
+        background-color: var(--violet-gum);
+        padding-block: calc(var(--space) * 4);
+    }
+
+    .xv-main {
+        position: relative;
+        text-align: center;
+        color: var(--light-beige);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: calc(var(--space) * 2);
+    }
+
+    .title-top {
+        /* position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%); */
+
+        font-weight: 700;
+
+
+        --min-font-size: 6rem;
+        --max-font-size: 12rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .title-bottom {
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: 700;
+
+        --min-font-size: 6rem;
+        --max-font-size: 12rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .frame {
+        max-width: 500px;
+
+        padding-inline: calc(var(--space) * 2);
+    }
+
+    .frame img {
+        
+        object-position: -1050px center;
+        object-position: center;
+
+        aspect-ratio: 9/16;
+        border-radius: 100rem;
+    }
+
+    .xv-text {
+        /* background-color: var(--light-beige); */
+        padding-inline: calc(var(--space) * 2);
+        padding-block: calc(var(--space) * 2);
+
+        display: flex;
+        justify-content: center;
+    }
+
+    hgroup {
+        max-width: 60ch;
+        border-radius: 100rem;
+        color: var(--light-beige);
+    }
+
+    p {
+        padding: 3rem;
+    }
+
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    .top-left {
+        border-radius: 100rem 100rem 0 0;
+    }
+    .top-right {
+        border-radius: 100rem 0 0 100rem;
+    }
+    .bottom-left {
+        border-radius: 0 100rem 100rem 0;
+    }
+    .bottom-right {
+        border-radius: 0 0 100rem 100rem;
+        object-position: top;
+    }
+</style>

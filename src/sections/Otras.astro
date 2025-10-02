@@ -1,5 +1,108 @@
+---
+import Anniversary from "../icons/Anniversary.astro";
+import Birthday from "../icons/Birthday.astro";
+import PrivateMeeting from "../icons/PrivateMeeting.astro";
+---
+
 <section>
-    <h2>OTRAS CELEBRACIONES ESPECIALES</h2>
-    <p>Cumpleaños, aniversarios o reuniones íntimas.</p>
-    <p>Siempre hay motivos para celebrar rodeados de quienes más querés, en un espacio versátil que se adapta a cada ocasión.</p>
+    <hgroup>
+        <div class="section-titles">
+            <h2>OTRAS</h2>
+            <h2>CELEBRACIONES</h2>
+            <h2>ESPECIALES</h2>
+        </div>
+        <img src="images/other-main.jpg" alt="">
+        <ul class="suggested-events">
+            <li><p>Cumpleaños</p><Birthday /></li>
+            <li><div class="vertical-line"></div></li>
+            <li><p>Aniversarios</p><Anniversary /></li>
+            <li><div class="vertical-line"></div></li>
+            <li><p>Reuniones íntimas</p><PrivateMeeting /></li>
+        </ul>
+    </hgroup>
+    <img src="images/other-1.jpg" alt="">
+    <article>
+        <p>Siempre hay motivos para celebrar rodeados de quienes más querés, en un espacio versátil que se adapta a cada ocasión.</p>
+    </article>
+    <img src="images/other-2.jpg" alt="">
+    <footer>
+        <div class="half-circle left"></div>
+        <a href="#">Consultanos</a>
+        <div class="half-circle right"></div>
+    </footer>
 </section>
+
+<style>
+    ul, li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    hgroup {
+        position: relative;
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .section-titles {
+        position: absolute;
+        color: var(--light-beige);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: calc(var(--space) * 1.5);
+
+    }
+    .section-titles h2 {
+
+
+        font-weight: 700;
+
+        --min-font-size: 2.5rem;
+        --max-font-size: 6rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .suggested-events {
+        position: absolute;
+        bottom: -2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+        display: flex;
+        gap: calc(var(--space) * 2);
+        background-color: var(--light-beige);
+        color: var(--desert-sand);
+        padding: 1rem 2rem;
+        border-radius: 100rem;
+        font-weight: 500;
+    }
+    .suggested-events li {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .vertical-line {
+        border-left: 4px solid var(--desert-sand);
+        height: 100%;
+        align-self: center;
+    }
+</style>

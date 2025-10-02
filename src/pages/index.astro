@@ -5,6 +5,10 @@ import Intro from '../sections/Intro.astro';
 import Carrusel from '../components/Carrusel.astro';
 import IntroText from '../sections/IntroText.astro';
 import IntroImages from '../sections/IntroImages.astro';
+import EventosSociales from '../sections/EventosSociales.astro';
+import Bodas from "../sections/Bodas.astro";
+import XV from "../sections/XV.astro";
+import Otras from "../sections/Otras.astro";
 ---
 
 <!DOCTYPE html>
@@ -23,6 +27,10 @@ import IntroImages from '../sections/IntroImages.astro';
    <Carrusel />
    <IntroText />
    <IntroImages />
+   <EventosSociales />
+   <Bodas />
+   <XV />
+   <Otras />
 </body>
 </html>
 
@@ -32,15 +40,34 @@ import IntroImages from '../sections/IntroImages.astro';
         --light-beige: #F3EFE6;
         --desert-sand: #AAA79E;
         --white: #FFFFFF;
+
+        --space: 1rem;
     }
 
     body {
         margin: 0;
         padding: 0;
         font-family: var(--font-parkinsans), sans-serif;
+        /* overflow: hidden; */
     }
     h1, h2, h3, h4, h5, h6, p {
         margin: 0;
         padding: 0;
     }
+
+    /* Trim Font Parkinsans*/
+    :is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote) {
+        display: flow-root;
+    }
+    :is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote)::before {
+        content: "";
+        display: table;
+        margin-bottom: calc(-0.5lh + 0.35em);
+    }
+    :is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote)::after {
+        content: "";
+        display: table;
+        margin-bottom: calc(-0.5lh + 0.35em);
+    }
+
 </style>

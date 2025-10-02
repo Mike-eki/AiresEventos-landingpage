@@ -1,8 +1,97 @@
-<section>
-    <h2>Eventos Sociales</h2>
-    <p>Cada evento merece ser único. Por eso te acompañamos en cada detalle, combinando un salón preparado para todo tipo de celebraciones con la gastronomía premium de Aires Catering, para que vos solo disfrutes</p>
-
-    <div>
-        Imagenes
+<section class="social-events">
+    <hgroup class="title">
+        <h2 class="silouette">EVENTOS</h2>
+        <h2>SOCIALES</h2>
+    </hgroup>
+    <img class="main-bg" src="images/intro-bg.jpg" alt="Eventos Sociales">
+    <div class="text">
+        <p>Cada evento merece ser único. Por eso te acompañamos en cada detalle, combinando un salón preparado para todo tipo de celebraciones con la gastronomía premium de Aires Catering, para que vos solo disfrutes</p>
     </div>
 </section>
+
+<picture class="gallery">
+    <img class="top-left" src="images/social-1.jpg" alt="">
+    <img class="top-right" src="images/social-2.jpg" alt="">
+    <img class="bottom-left" src="images/social-3.jpg" alt="">
+    <img class="bottom-right" src="images/social-4.jpeg" alt="">
+</picture>
+
+<style>
+    .social-events {
+        position: relative;
+        padding-block: calc(var(--space) * 4);
+        background-color: var(--light-beige);
+    }
+    .title, .text {
+        position: absolute;
+    }
+    .title {
+        top: 6rem;
+        left: 2rem;
+        color: var(--desert-sand);
+        text-align: right;
+
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--space) * 1.5);
+    }
+    .text {
+        bottom: 50%;
+        transform: translateY(50%);
+        left: 0;
+        max-width: 40ch;
+        background-color: var(--desert-sand);
+        padding: 3rem;
+        color: var(--light-beige);
+
+        border-radius: 0 100rem 100rem 0;
+    }
+
+    h2 {
+        font-size: clamp(4rem, 15vw, 6rem);
+        font-weight: 700;
+        text-align: left;
+    }
+    @supports (-webkit-text-stroke: 3px black) {
+        .silouette {
+            -webkit-text-stroke: 1px var(--desert-sand);
+            color: transparent;
+        }
+    }
+    img {
+        display: block;
+        max-width: 100%;
+        object-fit: cover;
+    }
+
+    .main-bg {
+        width: 75%;
+        height: 45rem;
+        border-radius: 100rem 0 0 100rem;
+        margin-left: auto;
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        background-color: var(--light-beige);
+    }
+
+    .gallery img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    .top-left {
+        border-radius: 100rem 100rem 0 0;
+    }
+    .top-right {
+        border-radius: 100rem 0 0 100rem;
+    }
+    .bottom-left {
+        border-radius: 0 100rem 100rem 0;
+    }
+    .bottom-right {
+        border-radius: 0 0 100rem 100rem;
+    }
+</style>

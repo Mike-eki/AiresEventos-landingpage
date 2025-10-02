@@ -1,5 +1,123 @@
-<section>
-    <h2>Bodas</h2>
-    <div>imagenes</div>
-    <p>Tu boda merece magia. Creamos un escenario especial para que vivas una noche hecha a tu medida.</p>
+
+<section class="wedding-section">
+    <header class="wedding-main">
+        <h2>BODAS</h2>
+        <picture class="frame">
+            <img src="images/wedding-main.jpg" alt="Foto de pareja de novios sonriendo en su boda">
+        </picture>
+    </header>
+
+    <picture class="gallery">
+        <img class="top-left" src="images/wedding-1.jpeg" alt="Foto de pareja de novios en su boda">
+        <img class="top-right" src="images/wedding-2.jpg" alt="Foto de pareja de novios en su boda">
+        <img class="bottom-left" src="images/wedding-3.jpg" alt="Foto de pareja de novios en su boda">
+        <img class="bottom-right" src="images/wedding-4.jpg" alt="Foto de pareja de novios en su boda">
+    </picture>
+    
+    <footer class="wedding-text">
+        <hgroup>
+            <p>Tu boda merece magia. Creamos un escenario especial para que vivas una noche hecha a tu medida.</p>
+        </hgroup>
+    </footer>
 </section>
+
+
+<style>
+    .wedding-section {
+        background-color: var(--light-beige);
+        padding-block: calc(var(--space) * 4);
+    }
+
+    .wedding-main {
+        position: relative;
+        text-align: center;
+        color: var(--desert-sand);
+
+        display: flex;
+        justify-content: center;
+    }
+
+    .wedding-main h2 {
+        position: absolute;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        font-weight: 700;
+
+
+        --min-font-size: 6rem;
+        --max-font-size: 12rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+    .frame {
+        max-width: 500px;
+
+        padding-inline: calc(var(--space) * 2);
+    }
+
+    .frame img {
+        
+        object-position: -1050px center;
+        object-position: center;
+
+        aspect-ratio: 9/16;
+        border-radius: 100rem;
+    }
+
+    .wedding-text {
+        background-color: var(--light-beige);
+        padding-inline: calc(var(--space) * 2);
+        padding-block: calc(var(--space) * 2);
+
+        display: flex;
+        justify-content: center;
+    }
+
+    hgroup {
+        max-width: 60ch;
+        border-radius: 100rem;
+        color: var(--desert-sand);
+    }
+
+    p {
+        padding: 3rem;
+    }
+
+
+    .gallery {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+    }
+
+    .top-left {
+        border-radius: 0 100rem 100rem 0;
+    }
+    .top-right {
+        border-radius: 100rem 100rem 0 0;
+    }
+    .bottom-left {
+        border-radius: 0 0 100rem 100rem;
+    }
+    .bottom-right {
+        border-radius: 100rem 0 0 100rem;
+    }
+</style>
