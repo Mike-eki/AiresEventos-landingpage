@@ -21,15 +21,10 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         </ul>
     </hgroup>
     <img src="images/other-1.jpg" alt="">
-    <article>
+    <article class="final-text">
         <p>Siempre hay motivos para celebrar rodeados de quienes más querés, en un espacio versátil que se adapta a cada ocasión.</p>
+        <img src="images/other-2.jpg" alt="">
     </article>
-    <img src="images/other-2.jpg" alt="">
-    <footer>
-        <div class="half-circle left"></div>
-        <a href="#">Consultanos</a>
-        <div class="half-circle right"></div>
-    </footer>
 </section>
 
 <style>
@@ -76,6 +71,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
     }
 
     img {
+        display: block;
         width: 100%;
         height: auto;
         object-fit: cover;
@@ -100,9 +96,47 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         align-items: center;
         gap: 0.5rem;
     }
+    .suggested-events li p {
+        --min-font-size: 0.6rem;
+        --max-font-size: 1.2rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );  
+    }
     .vertical-line {
         border-left: 4px solid var(--desert-sand);
         height: 100%;
         align-self: center;
+    }
+
+    .final-text {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .final-text p{
+        position: absolute;
+        top: -3rem;
+
+        width: 56ch;
+
+        background-color: var(--light-beige);
+        color: var(--desert-sand);
+
+        padding-inline: calc(var(--space) * 2);
+        padding-block: calc(var(--space) * 2.5);
+        margin-inline: auto;
+
+        border-radius: 100rem;
+
+        text-align: center;
+        
     }
 </style>

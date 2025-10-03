@@ -4,3 +4,19 @@
 <path d="M48 6H42V0H36V6H18V0H12V6H6C2.691 6 0 8.691 0 12V54C0 57.309 2.691 60 6 60H48C51.309 60 54 57.309 54 54V12C54 8.691 51.309 6 48 6ZM48.006 54H6V18H48L48.006 54Z" fill="#D4D1C5"/>
 <path d="M48 6H42V0H36V6H18V0H12V6H6C2.691 6 0 8.691 0 12V54C0 57.309 2.691 60 6 60H48C51.309 60 54 57.309 54 54V12C54 8.691 51.309 6 48 6ZM48.006 54H6V18H48L48.006 54Z" fill="black" fill-opacity="0.2"/>
 </svg>
+
+
+<style>
+    svg {
+        --min-font-size: 1rem;
+        --max-font-size: 4rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        width: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );  
+    }
+</style>

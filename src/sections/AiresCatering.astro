@@ -1,12 +1,197 @@
 <section>
-    <h2>AIRES CATERING</h2>
-    <p>Tu evento merece una propuesta gastronómica única, por eso, nuestro equipo de chefs trabaja junto a vos para diseñar un menú que se adapte a tus gustos, estilo y necesidades.</p>
-    <p>Desde entradas irresistibles hasta postres que conquistan, cada detalle está pensado para sorprender.</p>
+    <hgroup>
+        <div class="titles">
+            <h2>AIRES</h2>
+            <h2>CATERING</h2>
+        </div>
+        <img class="bg" src="images/ac-bg.jpg" alt="">
+        <img class="logo" src="images/ac-logo-white.png" alt="">
+    </hgroup>
+    <article class="information">
+        <header class="text-info">
+            <img class="iso" src="images/iso-ac-black.png" alt="">
+            <p>Tu evento merece una propuesta gastronómica única, por eso, nuestro equipo de chefs trabaja junto a vos para diseñar un menú que se adapte a tus gustos, estilo y necesidades.</p>
+            <p>Desde entradas irresistibles hasta postres que conquistan, cada detalle está pensado para sorprender.</p>
+        </header>
+        <picture class="chef-frame">
+            <img src="images/ac-chef.jpg" alt="">
+        </picture>
+    </article>
 
-    <ul>
-        <li>Menús diseñados a medida según el tipo de evento.</li>
-        <li>Opciones gourmet, tradicionales y de vanguardia.</li>
-        <li>Catering adaptable a cócteles, almuerzos, cenas de gala o reuniones informales</li>
-        <li>Presentación cuidada al detalle para una experiencia visual y gastronómica impecable.</li>
+    <ul class="container">
+        <li class="item-container">
+            <p class="item item-l round-r">Menús diseñados a medida según el tipo de evento.</p>
+            <img class="image-item" src="images/ac-1.jpg" alt="">
+        </li>
+        <li class="item-container">
+            <p class="item item-r round-l">Opciones gourmet, tradicionales y de vanguardia.</p>
+            <img class="image-item" src="images/ac-2.jpg" alt="">
+        </li>
+        <li class="item-container">
+            <p class="item item-l round-r">Catering adaptable a cócteles, almuerzos, cenas de gala o reuniones informales</p>
+            <img class="image-item" src="images/ac-3.jpg" alt="">
+        </li>
+        <li class="item-container">
+            <p class="item item-r round-l">Presentación cuidada al detalle para una experiencia visual y gastronómica impecable.</p>
+            <img class="image-item" src="images/ac-4.jpg" alt="">
+        </li>
     </ul>
 </section>
+
+<style>
+    ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    hgroup {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .bg {
+        z-index: -1;
+        aspect-ratio: 1 / 1;
+        filter: brightness(0.5);
+        height: 100vh;
+    }
+    .logo {
+        position: absolute;
+        top: 1rem; right: 1rem;
+        z-index: 10;
+        width: 10rem;
+    }
+
+    .titles {
+
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--space) * 1.5);
+    }
+    .titles h2 {
+        color: var(--white);
+
+        text-align: center;
+
+        font-weight: 700;
+
+        --min-font-size: 2.5rem;
+        --max-font-size: 6rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    .information {
+        display: flex;
+        min-height: 70vh;
+        overflow: hidden;
+    }
+    .iso {
+        width: 100%;
+        margin-inline: auto;
+
+        font-weight: 700;
+
+        --min-font-size: 6rem;
+        --max-font-size: 18rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        max-width: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .text-info {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--space) * 2.5);
+        justify-content: center;
+
+        width: 50%;
+
+        padding-block: calc(var(--space) * 1.5)
+    }
+    .text-info > * {
+        padding-inline: calc(var(--space) * 2);
+    }
+    .text-info p {
+        color: var(--desert-sand);
+    }
+    .chef-frame {
+        width: 50%;
+    }
+    .chef-frame img {
+        height: 100%;
+        object-position: bottom;
+    }
+
+    @media (max-width: 600px) {
+        .information {
+            flex-direction: column;
+        }
+        .text-info {
+            width: 100%;
+        }
+        .chef-frame {
+            width: 100%;
+        }
+    }
+
+    .item-container {
+        position: relative;
+    }
+    .item-l {
+        top: 0; left: 0
+    }
+    .item-r {
+        top: 0; right: 0;
+    }
+    .item {
+        position: absolute;
+        max-width: 30ch;
+        text-wrap: pretty;
+
+        padding-block: calc(var(--space) * 2);
+        padding-inline: calc(var(--space) * 2.5);
+        background-color: var(--desert-sand);
+        color: var(--light-beige);
+
+        --min-font-size: 0.8rem;
+        --max-font-size: 2rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .item.round-r {
+        border-radius: 0 100rem 100rem 0;
+    }
+    .item.round-l {
+        border-radius: 100rem 0 0 100rem;
+    }
+    .image-item {
+        aspect-ratio: 16/12;
+    }
+
+</style>

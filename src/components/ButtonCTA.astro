@@ -1,0 +1,54 @@
+---
+const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCircleColor = "var(--desert-sand)", bgColor = "var(--light-beige)", contentText = "Consultanos"} = Astro.props
+---
+
+<footer style=`background-color: ${bgColor}`>
+    <div class="half-circle left" style=`border-color: ${halfCircleColor};`></div>
+    <a href="#" 
+    style=`background-color: ${btnColor}; color: ${textColor}`>
+        {contentText}
+    </a>
+    <div class="half-circle right" style=`border-color: ${halfCircleColor};`></div>
+</footer>
+
+<style>
+    footer {
+        padding-block: calc(var(--space) * 2);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .half-circle {
+        display: block;
+
+        width: 100px;
+        height: 100px;
+        border-radius: 100rem;
+
+        border-top: 4px solid var(--desert-sand);
+        border-bottom: 4px solid var(--desert-sand);
+    }
+    .half-circle.left {
+        border-right: 4px solid var(--desert-sand);
+    }
+    .half-circle.right {
+        border-left: 4px solid var(--desert-sand);
+    }
+
+    a {
+        text-decoration: none;
+
+        font-size: 3rem;
+
+        padding: calc(var(--space) * 2);
+
+        /* color: var(--light-beige); */
+        /* background-color: ; */
+
+        border-radius: 100rem;
+    }
+
+
+</style>

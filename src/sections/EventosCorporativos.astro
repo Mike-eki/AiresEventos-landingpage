@@ -1,4 +1,90 @@
 <section>
-    <h2>EVENTOS CORPORATIVOS</h2>
-    <p>Más que un evento, una experiencia para tu equipo y tus clientes. Un espacio que refleja lo mejor de tu empresa.</p>
+    <hgroup>
+        <header>
+            <h2>EVENTOS</h2>
+            <h2>CORPORATIVOS</h2>
+        </header>
+        <img class="bg" src="images/corp-event-bg.jpg" alt="">
+    </hgroup>
+    <article>
+        <p>Más que un evento, una experiencia para tu equipo y tus clientes. Un espacio que refleja lo mejor de tu empresa.</p>
+        <img src="images/corp-event-1.jpeg" alt="">
+    </article>
 </section>
+
+
+<style>
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+    .bg {
+        height: 100vh;
+        filter: brightness(0.5);
+        z-index: -1;
+    }
+
+    hgroup {
+        position: relative;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    hgroup header {
+        position: absolute;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: calc(var(--space) * 1.3);
+    }
+
+    hgroup header h2 {
+
+        text-align: center;
+        
+        color: var(--white);
+
+        font-weight: 700;
+
+        --min-font-size: 2.5rem;
+        --max-font-size: 6rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    article {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    article p {
+        position: absolute;
+        color: var(--light-beige);
+        background-color: var(--desert-sand);
+
+        max-width: 54ch;
+        text-align: center;
+
+        padding: calc(var(--space) * 2);
+
+        border-radius: 0 0 100rem 100rem;
+    }
+
+    article img {
+        z-index: -1;
+    }
+
+</style>
