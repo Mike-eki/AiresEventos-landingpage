@@ -1,0 +1,70 @@
+<footer>
+    <ul class="rounded-container">
+        <li>
+            <address>Av. Eva Perón 8812, Rosario - Santa Fe</address>
+        </li>
+        <li>
+            <p>341 3 635965</p>
+        </li>
+        <li>
+            <p>aires.events@gmail.com</p>
+        </li>
+    </ul>
+
+    <ul class="rounded-container flex">
+        <li>
+            <p>@aires.salon</p>
+        </li>
+        <li>
+            <p>/airessalon</p>
+        </li>
+        <li>
+            <p>@aires.salon</p>
+        </li>
+    </ul>
+</footer>
+
+
+<style>
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    address {
+        font-style: normal;
+    }
+
+    footer {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                    url('images/footer-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        height: 100vh;
+
+        color: var(--white);
+    }
+
+    .rounded-container {
+
+        padding-block: calc(var(--space) * 2);
+        padding-right: calc(var(--space) * 6);
+        padding-left: calc(var(--space) * 2);
+
+        outline: 4px solid var(--white);
+        border-radius: 0 100rem 100rem 0;
+
+    }
+    @media (max-width: 660px) {
+        .rounded-container {
+            outline: none;
+        }
+    } 
+</style>

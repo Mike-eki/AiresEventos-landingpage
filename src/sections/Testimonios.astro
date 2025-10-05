@@ -1,0 +1,259 @@
+---
+import StarFill from "../icons/StarFill.astro";
+---
+
+<section>
+    <hgroup class="title-container">
+        <div class="title">
+            <h2>TESTI</h2>
+            <h2>MONIOS</h2>
+        </div>
+        <img class="main-img" src="images/testimony-main.jpg" alt="">
+        <!-- <div>
+            <p>circle</p>
+        </div> -->
+    </hgroup>
+
+    <ul class="container-of-items">
+        <li class="item-container r">
+            <blockquote class="quote">
+                <p>“Fui a un cumple de 15 y me sorprendió la recepción de bocaditos, variados, calientes y fríos. Ir con hambre y sin privarse en nada. Seguridad y buen trato del personal y mozos”.</p>
+            </blockquote>
+            <div class="author-container">
+                <p class="author-name"><strong>Leonardo Santini</strong></p>
+                <small class="author-detail">Agosto 2025 - Google</small>
+                <div class="stars">
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                </div>
+            </div>
+        </li>
+        
+        <li class="item-container l">
+            <div class="author-container-reverse">
+                <p class="author-name"><strong>Carina Torres</strong></p>
+                <small class="author-detail">Noviembre 2024 - Google</small>
+                <div class="stars">
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                </div>
+            </div>
+            <blockquote class="quote">
+                <p>“Tuvimos la graduación de mi hijo. Excelente lugar, atención, comida, bebida. Tuvimos un accidente con mi sobrina y la atención del personal, paramedicos y seguridad fue excelente. Super recomendable”.</p>
+            </blockquote>
+        </li>
+
+        <li class="item-container r">
+            <blockquote class="quote">
+                <p>“Precioso salón de eventos de la ciudad de Rosario. Especial para graduaciones, casamientos y fiestas de fin de año empresariales. Muy buena comida, abundante, bebida de todo. Buena música. Es un salón caro pero lo vale”.</p>
+            </blockquote>
+            <div class="author-container">
+                <p class="author-name"><strong>Javier Gustavo L.</strong></p>
+                <small class="author-detail">Octubre 2024 - Google</small>
+                <div class="stars">
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                    <StarFill />
+                </div>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<style>
+    ul, li {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    blockquote {
+        margin: 0;
+    }
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    section {
+        background-color: var(--light-beige);
+    }
+
+    .title-container {
+        position: relative;
+        display: flex;
+        justify-content: flex-end;
+
+        padding-inline: calc(var(--space) * 2);
+
+        --min-font-size: 2rem;
+        --max-font-size: 7rem;
+        --min-viewport: 400px;
+        --max-viewport: 1400px;
+
+        padding-right: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+        
+    }
+    .title {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--space) * 1.5);
+
+        color: var(--violet-gum);
+
+        --min-font-size: 3.5rem;
+        --max-font-size: 7rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    .main-img {
+        aspect-ratio: 2/3;
+        max-width: 500px;
+        border-radius: 50rem 50rem 0 0;
+
+        margin-top: 6rem;
+        margin-bottom: 3rem;
+    }
+
+
+    .container-of-items {
+        display: flex;
+        flex-direction: column;
+
+        gap: calc(var(--space) * 3);
+    }
+    .item-container {
+        display: flex;
+        align-items: center;
+
+        border-top: 4px solid var(--desert-sand);
+        border-bottom: 4px solid var(--desert-sand);
+
+    }
+    .item-container.r {
+        justify-content: right;
+    }
+    .item-container.l {
+        justify-content: left;
+    }
+    .quote {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .quote p {
+        max-width: 40ch;
+        padding-inline: calc(var(--space) * 1.5);
+
+        --min-font-size: 0.8rem;
+        --max-font-size: 1rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    .author-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: calc(var(--space) * 0.5);
+
+        outline: 4px solid var(--desert-sand);
+
+        --min-font-size: 1.5rem;
+        --max-font-size: 4rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        padding-inline: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+
+        : calc(var(--space) * 4);
+        padding-block: calc(var(--space) * 4);
+
+        border-radius: 100rem 0 0 100rem;
+    }
+
+    .author-name {
+        text-wrap-mode: nowrap;
+
+        --min-font-size: 1.2rem;
+        --max-font-size: 1.6rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    .stars {
+        display: flex;
+        gap: calc(var(--space) * 0.5);
+    }
+
+
+/*Reverse */
+
+    .author-container-reverse {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: calc(var(--space) * 0.5);
+
+        outline: 4px solid var(--desert-sand);
+
+        --min-font-size: 1.5rem;
+        --max-font-size: 4rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        padding-inline: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+
+        : calc(var(--space) * 4);
+        padding-block: calc(var(--space) * 4);
+
+        border-radius: 0 100rem 100rem 0;
+    }
+
+</style>

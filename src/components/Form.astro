@@ -1,0 +1,139 @@
+<form action="">
+
+    <label for="nombre">
+        <input name="nombre" type="text" placeholder="Nombre" required>
+    </label>
+    <label for="correo">
+        <input name="correo" type="email" placeholder="Email" required>
+    </label>
+    <label for="telefono">
+        <input name="telefono" type="tel" placeholder="Teléfono" required>
+    </label>
+    <label for="evento">
+        <select name="evento" id="event-type" required>
+            <option selected>Tipo de evento</option>
+            <option>Boda</option>
+            <option>XV Años</option>
+            <option>Cumpleaños</option>
+            <option>Aniversario</option>
+            <option>Corporativo</option>
+            <option>Reunión intima</option>
+            <option>Otro</option>
+        </select>
+    </label>
+    <label for="fecha">
+        <input name="fecha"  type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha del evento" required>
+    </label>
+    <label for="invitados">
+        <input name="invitados" type="number" placeholder="Cantidad de invitados" required>
+    </label>
+    <label for="mensaje">
+        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+    </label>
+    <button type="submit">Enviar</button>
+
+</form>
+
+<style>
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    gap: calc(var(--space) * 2);
+
+    --min-font-size: 15rem;
+        --max-font-size: 40rem;
+        --min-viewport: 500px;
+        --max-viewport: 1400px;
+
+        max-width: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+}
+
+input, select, textarea {
+    appearance: none;
+    background-color: transparent;
+
+    border: none;
+    border-bottom: 3px solid var(--white);
+
+    color: var(--white);
+
+    outline: none;
+
+    width: 100%;
+
+    font-family: inherit;
+    
+    --min-font-size: 0.8rem;
+        --max-font-size: 1.5rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+textarea {
+    resize: vertical;
+}
+
+textarea:focus, input:focus, select:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+option {
+    color: var(--light-beige);
+    background-color: var(--desert-sand);
+}
+
+input::placeholder, textarea::placeholder {
+    color: var(--white);
+}
+
+@media screen and (max-width: 660px) {
+    form {
+        max-width: 100%;
+    }
+}
+
+button[type="submit"] {
+    appearance: none;
+    padding: 1.5rem;
+    border-radius: 100rem;
+    background-color: rgba(170, 167, 158, 0.2);
+    border: 4px solid var(--desert-sand);
+    color: var(--light-beige);
+    font-family: inherit;
+    
+
+    --min-font-size: 1.5rem;
+        --max-font-size: 2rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+
+    cursor: pointer;
+}
+button[type="submit"]:hover {
+    background-color: rgba(170, 167, 158, 1);
+}
+
+
+</style>

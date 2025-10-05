@@ -1,8 +1,262 @@
+---
+import Accesibility from "../icons/Accesibility.astro";
+import Disco from "../icons/Disco.astro";
+import Heart from "../icons/Heart.astro";
+import New from "../icons/New.astro";
+import Service from "../icons/Service.astro";
+import Shield from "../icons/Shield.astro";
+import Star from "../icons/Star.astro";
+import Team from "../icons/Team.astro"
+import Temperature from "../icons/Temperature.astro";
+---
+
 <section>
-    <h2>Nuestro</h2>
-    <h2>DIFERENCIAL</h2>
-    <img src="" alt="" srcset="">
-    <ul>
-        <li></li>
+    <hgroup class="title-container">
+        <div class="titles">
+            <h2>Nuestro</h2>
+            <h2>DIFERENCIAL</h2>
+        </div>
+        <img src="images/dif-main.jpg" alt="">
+    </hgroup>
+    <ul class="container-of-items">
+        <li class="item-container to-r">
+            <Star />
+            <p class="item"><strong>Trayectoria y la confianza</strong> de quienes nos eligen año tras año.</p>
+        </li>
+        <li class="item-container to-l">
+            <Heart />
+            <p class="item"><strong>Nuestra dedicación y amor</strong> por lo que hacemos.</p>
+        </li>
+        <li class="item-container to-r">
+            <New />
+            <p class="item"><strong>Renovación constante</strong> de nuestros
+            espacios y servicios.</p>
+        </li>
+        <li class="item-container to-l">
+            <Team />
+            <p class="item"><strong>Capacitación permanente de nuestro equipo</strong> para brindar excelencia.</p>
+        </li>
+        <li class="item-container to-r">
+            <Temperature />
+            <p class="item"><strong>Climatización integral</strong> para el máximo confort en cualquier época del año.</p>
+        </li>
+        <li class="item-container to-l">
+            <Disco />
+            <p class="item"><strong>Sonido e iluminación profesional</strong> que se adaptan al estilo de tu celebración.</p>
+        </li>
+        <li class="item-container to-r">
+            <Accesibility />
+            <p class="item">Áreas completamente accesibles, incluyendo <strong>rampas y toilettes adaptados.</strong></p>
+        </li>
+        <li class="item-container to-l">
+            <Shield />
+            <p class="item"><strong>Estacionamiento privado con vigilancia</strong>, garantizando comodidad y seguridad.</p>
+        </li>
+        <li class="item-container to-r">
+            <Service />
+            <p class="item"><strong>Servicio integral</strong> que incluye maître, camareros, seguridad y chefs especializados.</p>
+        </li>
     </ul>
+
+    <footer class="where">
+        <h2>UBICACIÓN</h2>
+        <p>Nuestra ubicación estratégica te conecta fácilmente con toda la ciudad y alrededores: a minutos del centro, con rápido acceso desde zona norte, sur, Funes y Roldán.</p>
+
+        <div class="where-action">
+            <div class="round-rect"></div>
+            <a class="btn-map" href="#">Ver mapa</a>
+            <div class="round-rect"></div>
+        </div>
+
+    </footer>
 </section>
+
+<style>
+
+    section {
+        background-color: var(--light-beige);
+        padding-block: calc(var(--space) * 3);
+    }
+
+    ul, li {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .title-container {
+        position: relative;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: calc(var(--space) * 1.5);
+    }
+    .titles {
+        position: absolute;
+
+        display: flex;
+        flex-direction: column;
+
+        gap: calc(var(--space) * 1.5);
+        z-index: 2;
+        color: var(--white);
+
+        --min-font-size: 2rem;
+        --max-font-size: 4rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .title-container img {
+        object-position: center;
+        /* aspect-ratio: 16/9; */
+        z-index: 1;
+        filter: brightness(0.5);
+
+        height: 100vh;
+    }
+
+    .container-of-items {
+        display: flex;
+        flex-direction: column;
+
+        padding-block: calc(var(--space) * 1.75);
+
+        gap: calc(var(--space) * 1.2);
+
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("images/dif-bg.jpg");
+        background-position: center;
+        background-size: cover;
+        backdrop-filter: ;
+    }
+
+    .item-container {
+        padding: calc(var(--space) * 1.5);
+        background-color: rgba(170, 167, 158, 0.1);
+        border: 4px solid var(--desert-sand);
+
+        display: flex;
+        align-items: center;
+        gap: calc(var(--space) * 0.75);
+
+        max-width: max-content;
+    }
+
+    .item {
+        max-width: 40ch;
+        text-wrap: balance; /*balance | pretty*/
+        color: var(--light-beige);
+
+        --min-font-size: 0.8rem;
+        --max-font-size: 1.25rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .to-l {
+        align-self: flex-start;
+        border-radius: 0 100rem 100rem 0;
+        border-left: none;
+    }
+    .to-r {
+        align-self: flex-end;
+        border-radius: 100rem 0 0 100rem;
+        border-right: none;
+    }
+
+
+    .where {
+        display: flex;
+        flex-direction: column;
+
+        padding-top: calc(var(--space) * 4);
+        padding-bottom: calc(var(--space) * 2);
+
+        gap: calc(var(--space) * 3);
+    }
+
+    .where h2, .where p {
+        margin-inline: auto;
+    }
+    .where h2 {
+        color: var(--violet-gum);
+
+        --min-font-size: 3rem;
+        --max-font-size: 8rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .where p {
+        color: var(--desert-sand);
+        max-width: 50ch;
+        text-wrap: balance;
+        text-align: center;
+
+        --min-font-size: 0.8rem;
+        --max-font-size: 1.1rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+
+    .where-action {
+        display: flex;
+        justify-content: space-between;
+
+        gap: var(--space);
+    }
+
+    .btn-map {
+        padding: calc(var(--space) * 2);
+        border-radius: 100rem;
+        color: var(--violet-gum);
+        border: 4px solid var(--desert-sand);
+
+        font-size: 1.75rem;
+
+    }
+
+    .round-rect {
+        max-width: 200px;
+        width: 100%;
+        padding: calc(var(--space) * 2);
+        border-radius: 100rem;
+        color: var(--violet-gum);
+        border: 4px solid var(--desert-sand);
+    }
+
+</style>

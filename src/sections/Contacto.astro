@@ -1,0 +1,77 @@
+---
+import Form from "../components/Form.astro"
+---
+
+<section>
+    <div class="space">
+        <div class="rounded-container">
+            <hgroup>
+                <h2>CONTACTANOS</h2>
+            </hgroup>
+            <Form />
+        </div>
+    </div>
+</section>
+
+<style>
+    .space {
+        padding-block: calc(var(--space) * 4);
+        padding-right: calc(var(--space) * 4);
+    }
+
+    section {
+        
+
+        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                            url('images/contact-bg.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    .rounded-container {
+
+        padding-block: calc(var(--space) * 2);
+        padding-right: calc(var(--space) * 6);
+        padding-left: calc(var(--space) * 2);
+
+        outline: 4px solid var(--white);
+        border-radius: 0 100rem 100rem 0;
+
+    }
+    @media (max-width: 660px) {
+    .rounded-container {
+        outline: none;
+    }
+}
+
+    hgroup h2 {
+        color: var(--white);
+
+        --min-font-size: 2rem;
+        --max-font-size: 6rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+
+        margin-bottom: calc(var(--space) * 3);
+    }
+
+    @media screen and (max-width: 660px) {
+    .space {
+        padding: 0;
+    }
+    .rounded-container {
+        padding-left: 0;
+        padding-right: 0;
+        padding-inline: calc(var(--space) * 2);
+    }
+    form {
+        max-width: 100%;
+    }
+}
+</style>
