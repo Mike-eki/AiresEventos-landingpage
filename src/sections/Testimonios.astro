@@ -1,28 +1,47 @@
 ---
 import StarFill from "../icons/StarFill.astro";
+import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
 ---
 
-<section>
-    <hgroup class="title-container">
-        <div class="title">
-            <h2>TESTI</h2>
-            <h2>MONIOS</h2>
+<section class="testimonios-section-gsap">
+    <hgroup class="title-container testimonios-titles-container-gsap">
+        <div class="title testimonios-title-gsap">
+            <TitleTestiMonios />
+            <h2 style="display: none;">TESTI</h2>
+            <h2 style="display: none;">MONIOS</h2>
         </div>
-        <img class="main-img" src="images/testimony-main.jpg" alt="">
-        <!-- <div>
-            <p>circle</p>
-        </div> -->
+        <img class="main-img testimonios-main-img-gsap" src="images/testimony-main.webp" alt="Foto de dos personas disfrutando el momento">
+        <div class="circle-container testimonios-circle-container-gsap">
+            <svg class="testimonios-svg-gsap" viewBox="0 0 100 100">
+                <defs>
+                    <path id="circle" d="
+                        M 50, 50
+                        m -37, 0
+                        a 37,37 0 1,1 74,0
+                        a 37,37 0 1,1 -74,0"
+                    />
+                </defs>
+                <text 
+                    textLength="230"
+                    lengthAdjust="spacingAndGlyphs"
+                >
+                    <textPath href="#circle" >
+                        Clientes reales • Opiniones reales • Experiencias reales •
+                    </textPath>
+                </text>
+            </svg>
+        </div>
     </hgroup>
 
-    <ul class="container-of-items">
-        <li class="item-container r">
+    <ul class="container-of-items testimonios-container-of-items-gsap">
+        <li class="item-container r testimonios-item-container-gsap-1">
             <blockquote class="quote">
                 <p>“Fui a un cumple de 15 y me sorprendió la recepción de bocaditos, variados, calientes y fríos. Ir con hambre y sin privarse en nada. Seguridad y buen trato del personal y mozos”.</p>
             </blockquote>
             <div class="author-container">
                 <p class="author-name"><strong>Leonardo Santini</strong></p>
                 <small class="author-detail">Agosto 2025 - Google</small>
-                <div class="stars">
+                <div class="stars stars-gsap-1">
                     <StarFill />
                     <StarFill />
                     <StarFill />
@@ -32,11 +51,11 @@ import StarFill from "../icons/StarFill.astro";
             </div>
         </li>
         
-        <li class="item-container l">
+        <li class="item-container l testimonios-item-container-gsap-2">
             <div class="author-container-reverse">
                 <p class="author-name"><strong>Carina Torres</strong></p>
                 <small class="author-detail">Noviembre 2024 - Google</small>
-                <div class="stars">
+                <div class="stars stars-gsap-2">
                     <StarFill />
                     <StarFill />
                     <StarFill />
@@ -49,14 +68,14 @@ import StarFill from "../icons/StarFill.astro";
             </blockquote>
         </li>
 
-        <li class="item-container r">
+        <li class="item-container r testimonios-item-container-gsap-3">
             <blockquote class="quote">
                 <p>“Precioso salón de eventos de la ciudad de Rosario. Especial para graduaciones, casamientos y fiestas de fin de año empresariales. Muy buena comida, abundante, bebida de todo. Buena música. Es un salón caro pero lo vale”.</p>
             </blockquote>
             <div class="author-container">
                 <p class="author-name"><strong>Javier Gustavo L.</strong></p>
                 <small class="author-detail">Octubre 2024 - Google</small>
-                <div class="stars">
+                <div class="stars stars-gsap-3">
                     <StarFill />
                     <StarFill />
                     <StarFill />
@@ -108,6 +127,7 @@ import StarFill from "../icons/StarFill.astro";
     }
     .title {
         position: absolute;
+        z-index: 100000;
         left: 50%;
         transform: translateX(-50%);
 
@@ -117,7 +137,7 @@ import StarFill from "../icons/StarFill.astro";
 
         color: var(--violet-gum);
 
-        --min-font-size: 3.5rem;
+        --min-font-size: 3rem;
         --max-font-size: 7rem;
         --min-viewport: 375px;
         --max-viewport: 1400px;
@@ -256,4 +276,232 @@ import StarFill from "../icons/StarFill.astro";
         border-radius: 0 100rem 100rem 0;
     }
 
+
+    @media screen and (max-width: 530px) {
+        .item-container {
+            flex-direction: column;
+            border-bottom: none;
+        }
+        .item-container.l {
+            flex-direction: column-reverse;
+        }
+        .author-container-reverse {
+            padding-top: calc(var(--space) * 2);
+            outline: none;
+            border: 4px solid var(--desert-sand);
+            border-radius: 0 0 100rem 100rem;
+        }
+        .quote {
+            padding-block: calc(var(--space) * 2);
+            outline: 4px solid var(--desert-sand);
+            text-align: center;
+        }
+        .author-container {
+            padding-top: calc(var(--space) * 2);
+            outline: none;
+            border: 4px solid var(--desert-sand);
+            border-radius: 0 0 100rem 100rem;
+        }
+    }
+
+    .circle-container {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        width: 15rem;
+        height: 15rem;
+
+        z-index: 15;
+    }
+
+    svg {
+        shape-rendering: geometricPrecision;
+
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        transform-origin: center;
+    }
+
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    text {
+        will-change: transform;
+        transform: translateZ(0);   /* crea una capa propia */
+        text-rendering: optimizeLegibility;
+
+
+        animation: rotate 20s linear infinite;
+        transform-origin: 50% 50%;
+        fill: var(--violet-gum);
+        font-family: var(--font-switzer-light);
+        font-size: 10px;
+    }
+
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar el título SVG
+    gsap.from('.testimonios-title-gsap svg', {
+      scrollTrigger: {
+        trigger: '.testimonios-titles-container-gsap',
+        start: 'top 85%',
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen principal
+    gsap.from('.testimonios-main-img-gsap', {
+      scrollTrigger: {
+        trigger: '.testimonios-titles-container-gsap',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.5,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el círculo con texto rotativo
+    gsap.from('.testimonios-svg-gsap', {
+      scrollTrigger: {
+        trigger: '.testimonios-circle-container-gsap',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      scale: 0,
+      rotation: -180,
+      duration: 1.5,
+      ease: 'power3.out'
+    });
+    
+    // Animar el primer testimonio (derecha)
+    gsap.from('.testimonios-item-container-gsap-1', {
+      scrollTrigger: {
+        trigger: '.testimonios-item-container-gsap-1',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: 100,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el segundo testimonio (izquierda)
+    gsap.from('.testimonios-item-container-gsap-2', {
+      scrollTrigger: {
+        trigger: '.testimonios-item-container-gsap-2',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: -100,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el tercer testimonio (derecha)
+    gsap.from('.testimonios-item-container-gsap-3', {
+      scrollTrigger: {
+        trigger: '.testimonios-item-container-gsap-3',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: 100,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar las citas de los testimonios con stagger
+    gsap.from('.quote', {
+      scrollTrigger: {
+        trigger: '.testimonios-container-of-items-gsap',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.3,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar los contenedores de autores
+    gsap.from('.author-container, .author-container-reverse', {
+      scrollTrigger: {
+        trigger: '.testimonios-container-of-items-gsap',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 0.9,
+      duration: 1.1,
+      stagger: 0.4,
+      ease: 'power3.out'
+    });
+    
+    // Animar las estrellas del primer testimonio
+    gsap.from('.stars-gsap-1 svg', {
+      scrollTrigger: {
+        trigger: '.testimonios-item-container-gsap-1',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 0,
+      rotation: -180,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'back.out(1.7)'
+    });
+    
+    // Animar las estrellas del segundo testimonio
+    gsap.from('.stars-gsap-2 svg', {
+      scrollTrigger: {
+        trigger: '.testimonios-item-container-gsap-2',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 0,
+      rotation: 180,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'back.out(1.7)'
+    });
+    
+    // Animar las estrellas del tercer testimonio
+    gsap.from('.stars-gsap-3 svg', {
+      scrollTrigger: {
+        trigger: '.testimonios-item-container-gsap-3',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 0,
+      rotation: -180,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'back.out(1.7)'
+    });
+
+    ScrollTrigger.refresh();
+  });
+</script>

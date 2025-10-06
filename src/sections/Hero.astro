@@ -2,7 +2,7 @@
 import ArrowDown from '../icons/ArrowDown.astro';
 ---
 
-<section>
+<section id="hero">
     <div class="circle-container">
         <svg viewBox="0 0 100 100">
             <defs>
@@ -23,7 +23,7 @@ import ArrowDown from '../icons/ArrowDown.astro';
             </text>
         </svg>
     </div>
-    <button><ArrowDown /></button>
+    <button id="scroll-button" class="button-hero"><ArrowDown /></button>
     <video autoplay muted loop>
         <source src="videos/hero_video.mp4" type="video/mp4" />
     </video>
@@ -89,6 +89,16 @@ import ArrowDown from '../icons/ArrowDown.astro';
         cursor: pointer;
 
         z-index: 20;
+        
+        transition: transform 0.2s ease;
+    }
+
+    button:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    button:active {
+        transform: translate(-50%, -50%) scale(0.95);
     }
 
     video {
@@ -107,7 +117,42 @@ import ArrowDown from '../icons/ArrowDown.astro';
 </style>
 
 <script>
-import gsap from "gsap";
-
-    // gsap.to("h1", { duration: 1, x: 100 });
+  import { gsap } from 'gsap';
+  import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+  
+  // Registrar el plugin
+  gsap.registerPlugin(ScrollToPlugin);
+  
+  // Esperar a que el DOM esté listo
+  document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('scroll-button');
+    
+    if (button) {
+      button.addEventListener('click', () => {
+        // Timeline para coordinar las animaciones
+        const tl = gsap.timeline();
+        
+        // Pequeña animación del botón al hacer click
+        tl.to(button, {
+          scale: 0.9,
+          duration: 0.15,
+          ease: 'power2.out'
+        })
+        .to(button, {
+          scale: 1,
+          duration: 0.15,
+          ease: 'power2.out'
+        })
+        // Scroll suave hacia la sección intro
+        .to(window, {
+          duration: 0.15,
+          scrollTo: {
+            y: '#intro',
+            offsetY: 0
+          },
+          ease: 'power3.inOut'
+        }, '-=0.1'); // Pequeño overlap para fluidez
+      });
+    }
+  });
 </script>

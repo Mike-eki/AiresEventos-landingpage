@@ -1,31 +1,67 @@
-<footer>
-    <ul class="rounded-container">
-        <li>
-            <address>Av. Eva Perón 8812, Rosario - Santa Fe</address>
+---
+import Email from "../icons/Email.astro";
+import Instagram from "../icons/Instagram.astro";
+import LinkedIn from "../icons/LinkedIn.astro";
+import Map from "../icons/Map.astro";
+import Tiktok from "../icons/Tiktok.astro";
+import WhatsApp from "../icons/WhatsApp.astro";
+
+
+---
+
+<footer class="footer-section-gsap">
+    <ul class="rounded-container footer-rounded-container-gsap-1">
+        <li class="item footer-item-gsap-1">
+            <a href="https://maps.app.goo.gl/FmwZCqyzfiUDjLV28" target="_blank">
+                <address>Av. Eva Perón 8812, Rosario - Santa Fe</address>
+                <Map />
+            </a>
         </li>
-        <li>
-            <p>341 3 635965</p>
+        <li class="item footer-item-gsap-2">
+            <a href="https://wa.me/5493413635695" target="_blank">
+                <p>341 3 635965</p>
+                <WhatsApp />
+            </a>
         </li>
-        <li>
-            <p>aires.events@gmail.com</p>
+        <li class="item footer-item-gsap-3">
+            <a href="mailto:aires.events@gmail.com" target="_blank">
+                <p>aires.events@gmail.com</p>
+                <Email />
+            </a>
         </li>
     </ul>
 
-    <ul class="rounded-container flex">
-        <li>
-            <p>@aires.salon</p>
+    <ul class="rounded-container f-horizontal footer-rounded-container-gsap-2">
+        <li class="item footer-item-gsap-4">
+            <a href="https://www.instagram.com/aires.salon/" target="_blank">
+                <Instagram />
+                <p>@aires.salon</p>
+            </a>
         </li>
-        <li>
-            <p>/airessalon</p>
+        <li class="item footer-item-gsap-5">
+            <a href="https://www.linkedin.com/company/aireseventos/" target="_blank">
+                <LinkedIn />
+                <p>/airessalon</p>
+            </a>
         </li>
-        <li>
-            <p>@aires.salon</p>
+        <li class="item footer-item-gsap-6">
+            <a href="https://www.tiktok.com/@aires.salon?refer=creator_embed" target="_blank">
+                <Tiktok />
+                <p>@aires.salon</p>
+            </a>
         </li>
     </ul>
+
+    <img class="logo footer-logo-gsap" src="images/logo-as-white.png" alt="">
 </footer>
 
 
 <style>
+    a {
+        text-decoration: none;
+        color: var(--white);
+    }
+
     img {
         display: block;
         width: 100%;
@@ -40,31 +76,164 @@
 
     address {
         font-style: normal;
+        text-wrap: pretty;
+        text-align: right;
     }
 
     footer {
         background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                    url('images/footer-bg.jpg');
+                    url('images/footer-bg.webp');
         background-size: cover;
         background-position: center;
         height: 100vh;
 
         color: var(--white);
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        gap: calc(var(--space) * 4);
     }
 
     .rounded-container {
+        max-width: 600px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;  
+
+        gap: calc(var(--space) * 1.2);
 
         padding-block: calc(var(--space) * 2);
-        padding-right: calc(var(--space) * 6);
-        padding-left: calc(var(--space) * 2);
+        padding-left: calc(var(--space) * 6);
+        padding-right: calc(var(--space) * 2);
 
         outline: 4px solid var(--white);
-        border-radius: 0 100rem 100rem 0;
+        border-radius: 100rem 0 0 100rem;
 
     }
+
+    .item > a{
+        max-width: max-content;
+        display: flex;
+        align-items: center;
+
+        gap: calc(var(--space) * 0.75);
+    }
+
+    .logo {
+        width: 100px;
+        margin-right: calc(var(--space) * 1.5);
+    }
+
+    .rounded-container.f-horizontal {
+        flex-direction: row;
+        gap: calc(var(--space) * 2);
+    }
+    .rounded-container.f-horizontal > .item {
+        gap: calc(var(--space) * 0.5);
+    }
+
+
     @media (max-width: 660px) {
-        .rounded-container {
-            outline: none;
+        footer {
+            gap: calc(var(--space) * 1.5);
         }
+        .rounded-container {
+            border-radius: 0;
+            max-width: 100%;            
+            width: 100%;
+
+            padding-block: 0;
+            padding-inline: calc(var(--space) * 1.5);
+        }
+        .rounded-container.f-horizontal {
+            flex-direction: column;
+            gap: calc(var(--space) * 1.2);
+        }
+        .rounded-container.f-horizontal > .item > a{
+            flex-direction: row-reverse;
+        }
+        
     } 
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar el primer contenedor redondeado (contacto)
+    gsap.from('.footer-rounded-container-gsap-1', {
+      scrollTrigger: {
+        trigger: '.footer-section-gsap',
+        start: 'top 90%',
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      x: 100,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+    
+    // Animar los items del primer contenedor con stagger
+    gsap.from('.footer-item-gsap-1, .footer-item-gsap-2, .footer-item-gsap-3', {
+      scrollTrigger: {
+        trigger: '.footer-rounded-container-gsap-1',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el segundo contenedor redondeado (redes sociales)
+    gsap.from('.footer-rounded-container-gsap-2', {
+      scrollTrigger: {
+        trigger: '.footer-rounded-container-gsap-2',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: 100,
+      duration: 1.3,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+    
+    // Animar los items del segundo contenedor con stagger
+    gsap.from('.footer-item-gsap-4, .footer-item-gsap-5, .footer-item-gsap-6', {
+      scrollTrigger: {
+        trigger: '.footer-rounded-container-gsap-2',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el logo
+    gsap.from('.footer-logo-gsap', {
+      scrollTrigger: {
+        trigger: '.footer-section-gsap',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 1.2,
+      delay: 0.5,
+      ease: 'power3.out'
+    });
+
+    ScrollTrigger.refresh();
+  });
+</script>

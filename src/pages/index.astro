@@ -1,11 +1,11 @@
 ---
 import { Font } from "astro:assets";
-import Hero from '../sections/Hero.astro';
-import Intro from '../sections/Intro.astro';
-import Carrusel from '../components/Carrusel.astro';
-import IntroText from '../sections/IntroText.astro';
-import IntroImages from '../sections/IntroImages.astro';
-import EventosSociales from '../sections/EventosSociales.astro';
+import Hero from "../sections/Hero.astro";
+import Intro from "../sections/Intro.astro";
+import Carrusel from "../components/Carrusel.astro";
+import IntroText from "../sections/IntroText.astro";
+import IntroImages from "../sections/IntroImages.astro";
+import EventosSociales from "../sections/EventosSociales.astro";
 import Bodas from "../sections/Bodas.astro";
 import XV from "../sections/XV.astro";
 import Otras from "../sections/Otras.astro";
@@ -15,59 +15,130 @@ import AiresCatering from "../sections/AiresCatering.astro";
 import Diferencial from "../sections/Diferencial.astro";
 import Testimonios from "../sections/Testimonios.astro";
 import Contacto from "../sections/Contacto.astro";
-import Footer from "../sections/Footer.astro"
+import Footer from "../sections/Footer.astro";
+import WhatsAppFixed from "../components/WhatsAppFixed.astro";
+import Loader from "../components/Loader.astro";
+
+const imagenesIntro = [
+    { src: "images/card-1.webp", alt: "Foto de decoración del salon" },
+    { src: "images/card-2.webp", alt: "Foto de decoración del salon" },
+    { src: "images/card-3.webp", alt: "Foto de decoración del salon" },
+    { src: "images/card-4.webp", alt: "Foto de decoración del salon" },
+    { src: "images/card-5.webp", alt: "Foto de decoración del salon" },
+    { src: "images/card-6.webp", alt: "Foto de decoración del salon" },
+    { src: "images/card-7.webp", alt: "Foto de decoración del salon" },
+];
+
+const imagenesTestimonios = [
+    { src: "images/card-8.webp", alt: "Foto del salon de Aires Eventos" },
+    { src: "images/card-9.webp", alt: "Foto de quinceañera" },
+    { src: "images/card-10.webp", alt: "Foto del salon de Aires Eventos" },
+    { src: "images/card-11.webp", alt: "Foto del DJ" },
+    { src: "images/card-12.webp", alt: "Foto del salon de Aires Eventos" },
+    { src: "images/card-13.webp", alt: "Foto de pareja en su boda" },
+    { src: "images/card-14.webp", alt: "Foto de barra" },
+];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es-AR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aires Eventos - Salón de eventos en Rosario, Santa Fe. Bodas, XV años, eventos corporativos y catering gourmet. Experiencias únicas en un entorno elegante y cálido.">
-    <Font cssVariable="--font-parkinsans" preload />
-	<meta name="generator" content={Astro.generator} />
-    <title>Aires Eventos | Salón de Eventos en Rosario, Santa Fe</title>
-</head>
-<body>
-   <Hero />
-   <Intro />
-   <Carrusel />
-   <IntroText />
-   <IntroImages />
-   <EventosSociales />
-   <Bodas />
-   <XV />
-   <Otras />
-   <ButtonCTA />
-   <EventosCorporativos />
-   <ButtonCTA />
-   <AiresCatering />
-   <ButtonCTA contentText="Consúltanos sobre Aires Catering"/>
-   <Diferencial />
-   <Testimonios />
-   <Carrusel />
-   <Contacto />
-   <Footer />
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Aires Eventos - Salón de eventos en Rosario, Santa Fe. Bodas, XV años, eventos corporativos y catering gourmet. Experiencias únicas en un entorno elegante y cálido."
+        />
+        <Font cssVariable="--font-parkinsans" preload />
+        <meta name="generator" content={Astro.generator} />
+        <title>Aires Eventos | Salón de Eventos en Rosario, Santa Fe</title>
+    </head>
+    <body>
+        <Loader />
+        <Hero />
+        <WhatsAppFixed />
+        <Intro />
+        <Carrusel images={imagenesIntro} />
+        <IntroText />
+        <IntroImages />
+        <EventosSociales />
+        <Bodas />
+        <XV />
+        <Otras />
+        <ButtonCTA contentText="Consúltanos" />
+        <EventosCorporativos />
+        <ButtonCTA contentText="Consúltanos" />
+        <AiresCatering />
+        <ButtonCTA contentText="Consúltanos sobre Aires Catering" />
+        <Diferencial />
+        <Testimonios />
+        <Carrusel images={imagenesTestimonios} />
+        <Contacto />
+        <Footer />
+        
+    </body>
 </html>
 
 <style is:global>
     :root {
-        --violet-gum: #908DB8;
-        --light-beige: #F3EFE6;
-        --desert-sand: #AAA79E;
-        --white: #FFFFFF;
+        --violet-gum: #908db8;
+        --light-beige: #f3efe6;
+        --desert-sand: #aaa79e;
+        --white: #ffffff;
 
         --space: 1rem;
+    }
+
+    /* Estilos necesarios para ScrollSmoother */
+
+    /* Para móvil: evita rubberbanding */
+    /* @media (pointer: coarse) {
+        body {
+            overscroll-behavior: none; 
+        }
+    }
+    
+    #smooth-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        touch-action: pan-y;
+    }
+
+    #smooth-content {
+        overflow: visible;
+        width: 100%;
+        will-change: transform;
+        min-height: 200vh;
+    } */
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Mejorar el rendimiento de las animaciones */
+    * {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
 
     body {
         margin: 0;
         padding: 0;
         font-family: var(--font-parkinsans), sans-serif;
-        /* overflow: hidden; */
+        height: 100%;
+        overflow-x: hidden;
     }
-    h1, h2, h3, h4, h5, h6, p {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
         margin: 0;
         padding: 0;
     }
@@ -76,15 +147,40 @@ import Footer from "../sections/Footer.astro"
     :is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote) {
         display: flow-root;
     }
-    :is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote)::before {
+    :is(
+            [class*="u-text-style-"],
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            blockquote
+        )::before {
         content: "";
         display: table;
         margin-bottom: calc(-0.5lh + 0.35em);
     }
-    :is([class*="u-text-style-"], h1, h2, h3, h4, h5, h6, p, blockquote)::after {
+    :is(
+            [class*="u-text-style-"],
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            blockquote
+        )::after {
         content: "";
         display: table;
         margin-bottom: calc(-0.5lh + 0.35em);
     }
-
 </style>
+
+<script>
+    // import { initSmoothScroll } from '../scripts/smoothScroll';
+    
+    // initSmoothScroll();
+</script>

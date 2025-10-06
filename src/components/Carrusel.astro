@@ -1,228 +1,243 @@
 ---
+import ArrowLeft from "../icons/ArrowLeft.astro";
+import ArrowRight from "../icons/ArrowRight.astro";
 
+// Definir la interfaz para las imágenes
+interface ImageData {
+  src: string;
+  alt: string;
+}
+
+// Props del componente
+interface Props {
+  images: ImageData[];
+}
+
+const { images } = Astro.props;
+
+// Generar un ID único para cada instancia del carrusel
+const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
-<nav class="scroll-layout">
+<nav class="scroll-layout" data-carousel={carouselId}>
+
+  <button class="nav-button prev" aria-label="Imagen anterior">
+    <ArrowLeft />
+  </button>
+
   <menu class="carousel">
     <ul class="content">
+      {images.map((image) => (
         <article class="card">
-            <picture class="image-frame">
-                <img src="images/card-1.jpg" alt="Foto de decoración del salon">
-            </picture>
-            </footer>
+          <picture class="image-frame">
+            <img src={image.src} alt={image.alt}>
+          </picture>
         </article>
-        <article class="card">
-            <picture class="image-frame">
-                <img src="images/card-2.jpg" alt="Foto de decoración del salon">
-            </picture>
-        </article>
-        <article class="card">
-            <picture class="image-frame">
-                <img src="images/card-3.jpg" alt="Foto de decoración del salon">
-            </picture>
-        </article>
-        <article class="card">
-            <picture class="image-frame">
-                <img src="images/card-4.jpg" alt="Foto de decoración del salon">
-            </picture>
-        </article>
-        <article class="card">
-            <picture class="image-frame">
-                <img src="images/card-5.jpg" alt="Foto de decoración del salon">
-            </picture>
-        </article>
+      ))}
     </ul>
   </menu>
+
+  <button class="nav-button next" aria-label="Imagen siguiente">
+    <ArrowRight />
+  </button>
 </nav>
 
+
 <style>
-
-/* SCROLLER */
-/* horizontal scroll snap */
-.carousel {
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  overscroll-behavior-x: contain;
-
-  scrollbar-color: #42d66e;
-  
-  @media (prefers-reduced-motion: no-preference) {
-    scroll-behavior: smooth;
-  }
-  
-  /* snap to start */  
-  & .card {
-    scroll-snap-align: start;
-  }
-}
-
-/* Estilos para navegadores basados en WebKit (Chrome, Edge, Safari) */
-.carousel::-webkit-scrollbar {
-    height: 1rem;                   /* grosor de la barra horizontal */
-    background: transparent;           /* fondo de la pista */
-}
-
-/* “thumb” es la parte que se arrastra */
-.carousel::-webkit-scrollbar-thumb {
-    background: var(--violet-gum);           /* color del pulgar */
-    border-radius: 6px;            /* bordes redondeados */
-    border: 2px solid transparent;     /* espacio entre pulgar y pista */
-}
-
-
-/* SCROLL BUTTONS */
-/* create buttons by selecting them and adding content */
-.carousel {
-  &::scroll-button(*) {
-    /* make them round and easy to press */
-    inline-size: 48px;
-    aspect-ratio: 1;
-    border-radius: 1e3px;
-    border: 2px solid rgba(153, 153, 153, 0.5);
-    background-color: rgba(255, 255, 255, 0.3);
-    
-    /* space from content */
-    margin: 5px;
-  }
-  
-  &::scroll-button(*):focus-visible {
-    outline-offset: 5px;
-  }
-  
-  &::scroll-button(*):not(:disabled):is(:hover, :active) {
-    background-color: rgba(255, 255, 255);
-  }
-  
-  &::scroll-button(*):not(:disabled):active {
-    scale: 90%;
-  }
-
-  &::scroll-button(*):is(:disabled) {
-    display: none;
-  }
-  
-  
-  &::scroll-button(left) {
-    position: absolute;
-    top: 30%;
-    transform: translate(0, 50%);
-    background-color: var(--violet-gum);
-    background-image: url('svg/arrow-left.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    /* content:  url('svg/arrow-left.svg') / "⬅" / "Scroll Left"; */
-    content: ""
-    /* grid-area: center; place markers in parent grid area */
-  }
-  
-  &::scroll-button(right) {
-    position: absolute;
-    right: 0;
-    top: 30%;
-    transform: translate(0, 50%);
-    background-color: var(--violet-gum);
-    background-image: url('svg/arrow-right.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
-    /* content: url('svg/arrow-right.svg') / "⮕" / "Scroll Right"; */
-    content: "";
-    /* grid-area: right; */
-  }
-}
-
-
-
-
-/* SCROLL MARKERS */
-/* create marker group */
-/* create markers for each item */
-.carousel {
-  /* create markers 'after' scroller */
-  scroll-marker-group: after;
-
-  /* create markers container and own dots layout */
-  &::scroll-marker-group {
-    grid-area: markers; /* place markers in parent grid area */
-    
-    /* 15px by 15px horizontal grid - size of dots */
-    display: grid;
-    place-content: safe center;
-    grid: 30px / auto-flow 30px;
-    gap: 15px;
-    padding: 15px;
-    scroll-padding: 15px;
-    
-    /* handle overflow */
-    overflow: auto;
-    overscroll-behavior-x: contain;
-    scrollbar-width: auto;
-    scroll-snap-type: x mandatory;
-    
-    @media (prefers-reduced-motion: no-preference) {
-      scroll-behavior: smooth;
-    }
-  }
-
-}
-
   .scroll-layout {
     background-color: var(--light-beige);
+    width: 100%;
+    padding: 2rem 0;
     position: relative;
-    display: grid;
-    /* border: 1px dashed gray; */
-    
-    /* try a different layout =) */
-    grid-template-areas: 
-      "left scroll right"
-      ". markers .";
-    
-    /* just place items in the grid */
-    grid-template-areas: 
-      "scroll scroll scroll"
-      "left markers right";
-    
-    grid-template-columns: auto 1fr auto;
-
-    .carousel {
-      grid-area: scroll;
-    }
   }
-  
+
   .carousel {
-    overscroll-behavior-x: contain;
-    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 
   .content {
     display: flex;
-    flex-wrap: nowrap;
-
-    gap: var(--element-horizontal-space);
-    padding: 0;
+    gap: 1.5rem;
+    padding: 0 2rem;
     margin: 0;
-
+    list-style: none;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    height: 32rem;
   }
 
+  .content::-webkit-scrollbar {
+    width: 16px;
+  }
 
-.card {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    margin-inline: 1rem;
-    margin-bottom: 1rem;
-}
-.image-frame {
+  .content::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+
+  .content::-webkit-scrollbar-thumb {
+    background-color: var(--violet-gum);
+    border-radius: 100px;
+  }
+
+  .card {
+    flex: 0 0 auto;
+    width: 280px;
+    scroll-snap-align: center;
+    transition: transform 0.3s ease;
+  }
+
+  .image-frame {
     display: block;
-    overflow: hidden;
-    border-radius: 50rem 50rem 0 0;
-    aspect-ratio: 9/16;
-}
-.image-frame img, .image-frame source {
-    display: block;
-    aspect-ratio: 9/16;
-    height: 100%;
+    width: 100%;
+    height: 350px;
+    position: relative;
+  }
+
+  .image-frame img {
+    width: 100%;
+    height: 30rem;
     object-fit: cover;
-    object-position: center;
-}
+    display: block;
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    aspect-ratio: 9/16;
+  }
 
+  .nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--violet-gum);
+    border: none;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .nav-button:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .nav-button:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .nav-button.prev {
+    left: 0;
+    border-top-right-radius: 100rem;
+    border-bottom-right-radius: 100rem;
+  }
+
+  .nav-button.next {
+    right: 0;
+    border-top-left-radius: 100rem;
+    border-bottom-left-radius: 100rem;
+  }
+
+  .nav-button:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    .card {
+      width: 240px;
+    }
+
+    .image-frame {
+      height: 300px;
+    }
+
+    .content {
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    .nav-button {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-button.prev {
+      left: 0.5rem;
+    }
+
+    .nav-button.next {
+      right: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .card {
+      width: 85vw;
+    }
+
+    .nav-button {
+      width: 36px;
+      height: 36px;
+    }
+  }
 </style>
+
+<script>
+  // Seleccionar TODOS los carruseles en la página
+  const carousels = document.querySelectorAll('.scroll-layout');
+
+  carousels.forEach((scrollLayout) => {
+    const carousel = scrollLayout.querySelector('.content');
+    const prevBtn = scrollLayout.querySelector('.nav-button.prev') as HTMLButtonElement | null;
+    const nextBtn = scrollLayout.querySelector('.nav-button.next') as HTMLButtonElement | null;
+    const cards = scrollLayout.querySelectorAll('.card');
+
+    if (carousel && prevBtn && nextBtn && cards.length > 0) {
+      const cardWidth = (cards[0] as HTMLElement).offsetWidth;
+      const gap = 24; // 1.5rem en px
+      const scrollAmount = cardWidth + gap;
+
+      // Función para actualizar el estado de los botones
+      function updateButtons() {
+        if (!carousel || !prevBtn || !nextBtn) return;
+        const scrollLeft = carousel.scrollLeft;
+        const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+
+        prevBtn.disabled = scrollLeft <= 0;
+        nextBtn.disabled = scrollLeft >= maxScroll - 1;
+      }
+
+      // Navegar a la izquierda
+      prevBtn.addEventListener('click', () => {
+        carousel.scrollBy({
+          left: -scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+
+      // Navegar a la derecha
+      nextBtn.addEventListener('click', () => {
+        carousel.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+
+      // Actualizar botones al hacer scroll
+      carousel.addEventListener('scroll', updateButtons);
+
+      // Actualizar botones al cargar
+      updateButtons();
+
+      // Actualizar al redimensionar la ventana
+      window.addEventListener('resize', updateButtons);
+    }
+  });
+</script>

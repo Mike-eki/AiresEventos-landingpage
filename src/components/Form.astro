@@ -70,11 +70,11 @@ input, select, textarea {
     font-family: inherit;
     
     --min-font-size: 0.8rem;
-        --max-font-size: 1.5rem;
-        --min-viewport: 375px;
-        --max-viewport: 1400px;
+    --max-font-size: 1.2rem;
+    --min-viewport: 375px;
+    --max-viewport: 1400px;
 
-        font-size: calc(
+    font-size: calc(
             var(--min-font-size) + 
             (var(--max-font-size) - var(--min-font-size)) * 
             ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))

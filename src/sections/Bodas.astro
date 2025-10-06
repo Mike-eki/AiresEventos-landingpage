@@ -1,22 +1,31 @@
+---
+import TitleBodas from "../title-svgs/TitleBodas.astro";
+---
 
 <section class="wedding-section">
     <header class="wedding-main">
-        <h2 class="title">BODAS</h2>
+        <h2 class="wedding-title" style="display: none;">BODAS</h2>
+        <TitleBodas />
         <picture class="frame">
-            <img src="images/wedding-main.jpg" alt="Foto de pareja de novios sonriendo en su boda">
+            <img src="images/wedding-main.webp" alt="Foto de pareja de novios sonriendo en su boda">
         </picture>
     </header>
 
-    <picture class="gallery">
-        <img class="top-left" src="images/wedding-1.jpeg" alt="Foto de pareja de novios en su boda">
-        <img class="top-right" src="images/wedding-2.jpg" alt="Foto de pareja de novios en su boda">
-        <img class="bottom-left" src="images/wedding-3.jpg" alt="Foto de pareja de novios en su boda">
-        <img class="bottom-right" src="images/wedding-4.jpg" alt="Foto de pareja de novios en su boda">
+    <picture class="wedding-gallery">
+        <img class="wedding-top-left" src="images/wedding-1.webp" alt="Foto de pareja de novios en su boda">
+        <img class="wedding-top-right" src="images/wedding-2.webp" alt="Foto de pareja de novios en su boda">
+        <img class="wedding-bottom-left" src="images/wedding-3.webp" alt="Foto de pareja de novios en su boda">
+        <img class="wedding-bottom-right" src="images/wedding-4.webp" alt="Foto de pareja de novios en su boda">
     </picture>
     
     <footer class="wedding-text">
-        <hgroup>
-            <p>Tu boda merece magia. Creamos un escenario especial para que vivas una noche hecha a tu medida.</p>
+        <hgroup class="wedding-text-container">
+            <div class="wedding-half-circle left"></div>
+            <hgroup class="wedding-p-text">
+                <p><strong>Tu boda merece magia</strong></p>
+                <p>Creamos un escenario especial para que vivas una noche hecha a tu medida.</p>
+            </hgroup>
+            <div class="wedding-half-circle right"></div>
         </hgroup>
     </footer>
 </section>
@@ -25,7 +34,7 @@
 <style>
     .wedding-section {
         background-color: var(--light-beige);
-        padding-block: calc(var(--space) * 4);
+        padding-top: calc(var(--space) * 4);
     }
 
     .wedding-main {
@@ -70,8 +79,6 @@
     }
 
     .frame img {
-        
-        object-position: -1050px center;
         object-position: center;
 
         aspect-ratio: 9/16;
@@ -80,50 +87,63 @@
 
     .wedding-text {
         background-color: var(--light-beige);
-        padding-inline: calc(var(--space) * 2);
         padding-block: calc(var(--space) * 2);
-
+    }
+    .wedding-text-container {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
+        
     }
-
-    hgroup {
-        max-width: 60ch;
-        border-radius: 100rem;
+    .wedding-text-container p {
         color: var(--desert-sand);
+        text-align: center;
+    }
+    .wedding-half-circle {
+        display: block;
+
+        max-width: 100%;
+        width: 100%;
+        
+        outline: 4px solid var(--desert-sand);
+    }
+    .wedding-half-circle.left {
+        border-radius: 0 100rem 100rem 0;
+    }
+    .wedding-half-circle.right {
+        border-radius: 100rem 0 0 100rem;
     }
 
-    p {
-        padding: 3rem;
-    }
 
 
-    .gallery {
+   
+
+
+    .wedding-gallery {
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
 
-    .gallery img {
+    .wedding-gallery img {
         width: 100%;
         aspect-ratio: 1 / 1;
     }
 
-    .top-left {
+    .wedding-top-left {
         border-radius: 0 100rem 100rem 0;
     }
-    .top-right {
+    .wedding-top-right {
         border-radius: 100rem 100rem 0 0;
     }
-    .bottom-left {
+    .wedding-bottom-left {
         border-radius: 0 0 100rem 100rem;
     }
-    .bottom-right {
+    .wedding-bottom-right {
         border-radius: 100rem 0 0 100rem;
     }
 
     
 
-    .title {
+    .wedding-title {
         font-weight: bolder;
         text-transform: uppercase;
 
@@ -137,4 +157,110 @@
 
         paint-order: stroke fill;
     }
+
+
+    .wedding-p-text {
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--space) * 2);
+        width: 100%;
+        padding-inline: calc(var(--space) * 2);
+    }
+
+    strong {
+        text-wrap: nowrap;
+
+        --min-font-size: 1.2rem;
+        --max-font-size: 2.5rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar el título SVG
+    gsap.from('.wedding-main svg', {
+      scrollTrigger: {
+        trigger: '.wedding-section',
+        start: 'top 80%',
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen principal
+    gsap.from('.frame img', {
+      scrollTrigger: {
+        trigger: '.wedding-section',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar las imágenes de la galería con stagger
+    gsap.from([
+      '.wedding-top-left',
+      '.wedding-top-right',
+      '.wedding-bottom-left',
+      '.wedding-bottom-right'
+    ], {
+      scrollTrigger: {
+        trigger: '.wedding-gallery',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el texto
+    gsap.from('.wedding-p-text p', {
+      scrollTrigger: {
+        trigger: '.wedding-text',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      x: -30,
+      duration: 1,
+      delay: 0.3,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar los semicírculos
+    gsap.from('.wedding-half-circle', {
+      scrollTrigger: {
+        trigger: '.wedding-text',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scaleX: 0,
+      duration: 1,
+      stagger: 0.3,
+      ease: 'power3.out'
+    });
+
+    ScrollTrigger.refresh(); // Refresca triggers después de carga
+  });
+</script>

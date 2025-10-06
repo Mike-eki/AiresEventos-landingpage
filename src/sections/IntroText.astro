@@ -1,4 +1,4 @@
-<section>
+<section class="intro-text">
     <hgroup>
         <p>A pocos minutos del centro de la ciudad, combinamos naturaleza, diseño y excelencia en cada detalle para convertir cualquier ocasión en un recuerdo inolvidable.</p>
     </hgroup>
@@ -23,5 +23,32 @@
 
     p {
         padding: 3rem;
+        text-align: center;
     }
 </style>
+
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar el párrafo de texto
+    gsap.from('.intro-text hgroup p', {
+      scrollTrigger: {
+        trigger: '.intro-text',
+        start: 'top 80%', // Ajustable a 'top bottom' si se activa demasiado pronto/tarde
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      ease: 'power3.out'
+    });
+
+    ScrollTrigger.refresh(); // Refresca triggers después de carga
+  });
+</script>

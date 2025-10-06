@@ -1,54 +1,181 @@
 ---
-const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCircleColor = "var(--desert-sand)", bgColor = "var(--light-beige)", contentText = "Consultanos"} = Astro.props
+const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCircleColor = "var(--desert-sand)", bgColor = "var(--light-beige)", contentText = "Boton CTA"} = Astro.props
 ---
 
-<footer style=`background-color: ${bgColor}`>
-    <div class="half-circle left" style=`border-color: ${halfCircleColor};`></div>
-    <a href="#" 
+<footer class="cta-component" style=`background-color: ${bgColor}`>
+    <div class="half-circle left" style=`outline-color: ${halfCircleColor};`></div>
+    <a href="#contacto" class="cta-button"
     style=`background-color: ${btnColor}; color: ${textColor}`>
         {contentText}
     </a>
-    <div class="half-circle right" style=`border-color: ${halfCircleColor};`></div>
+    <div class="half-circle right" style=`outline-color: ${halfCircleColor};`></div>
 </footer>
 
 <style>
     footer {
         padding-block: calc(var(--space) * 2);
-
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: stretch;
+        gap: calc(var(--space) * 2);
     }
 
     .half-circle {
         display: block;
-
-        width: 100px;
-        height: 100px;
-        border-radius: 100rem;
-
-        border-top: 4px solid var(--desert-sand);
-        border-bottom: 4px solid var(--desert-sand);
+        max-width: 100%;
+        width: 100%;
+        outline: 4px solid #000;
+        
+        /* Animación de entrada - VISIBLE por defecto */
+        opacity: 1;
+        transform: scaleX(1);
+        
+        /* Transición para efectos hover */
+        transition: transform 0.4s ease;
     }
+    
     .half-circle.left {
-        border-right: 4px solid var(--desert-sand);
+        border-radius: 0 100rem 100rem 0;
     }
+    
     .half-circle.right {
-        border-left: 4px solid var(--desert-sand);
+        border-radius: 100rem 0 0 100rem;
     }
 
     a {
         text-decoration: none;
-
-        font-size: 3rem;
-
+        --min-font-size: 1rem;
+        --max-font-size: 3rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+        text-align: center;
         padding: calc(var(--space) * 2);
-
-        /* color: var(--light-beige); */
-        /* background-color: ; */
-
         border-radius: 100rem;
+        
+        /* VISIBLE por defecto */
+        opacity: 1;
+        transform: scale(1);
+        
+        /* Transición para efectos hover */
+        transition: all 0.3s ease;
+        
+        /* Animación de pulso - solo comienza después de 3 segundos */
+        animation: pulse 2s ease-in-out 3s infinite;
     }
 
+    /* Efectos hover */
+    a:hover {
+        transform: scale(1.05);
+        /* Sombra gris sutil */
+        box-shadow: 0 8px 25px rgba(74, 74, 78, 0.15);
+    }
 
+    a:active {
+        transform: scale(0.95);
+        transition: transform 0.1s ease;
+    }
+
+    /* Cuando se hace hover en el contenedor, animar los semicírculos también */
+    footer:hover .half-circle {
+        transform: scaleX(1.1);
+    }
+
+    /* Keyframes para animación de pulso */
+    @keyframes pulse {
+        0%, 100% {
+            transform: scale(1);
+            /* Halo violeta oscuro muy sutil */
+            box-shadow: 0 0 0 0 rgba(74, 54, 104, 0.1);
+        }
+        50% {
+            transform: scale(1.02);
+            /* Halo violeta oscuro expandido */
+            box-shadow: 0 0 0 8px rgba(74, 54, 104, 0);
+        }
+    }
+
+    /* Pausar animación de pulso al hacer hover */
+    a:hover {
+        animation: none;
+    }
+
+    /* Si quieres animaciones de entrada, puedes usar esta clase adicional */
+    .cta-component.animate-in .half-circle {
+        opacity: 0;
+        transform: scaleX(0);
+        animation: halfCircleExpand 1s ease-out forwards;
+    }
+    
+    .cta-component.animate-in .half-circle.left {
+        animation-delay: 0.1s;
+    }
+    
+    .cta-component.animate-in .half-circle.right {
+        animation-delay: 0.3s;
+    }
+    
+    .cta-component.animate-in .cta-button {
+        opacity: 0;
+        transform: scale(0.8);
+        animation: buttonEntrance 1.2s ease-out 0.5s forwards;
+    }
+
+    @keyframes halfCircleExpand {
+        from {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        to {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+    @keyframes buttonEntrance {
+        0% {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        70% {
+            transform: scale(1.05);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        footer {
+            gap: calc(var(--space) * 1);
+            padding-block: calc(var(--space) * 1.5);
+        }
+        
+        a {
+            padding: calc(var(--space) * 1.5);
+            animation: pulseMobile 2s ease-in-out 3s infinite;
+        }
+        
+        @keyframes pulseMobile {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(74, 54, 104, 0.1);
+            }
+            50% {
+                transform: scale(1.01);
+                box-shadow: 0 0 0 6px rgba(74, 54, 104, 0);
+            }
+        }
+        
+        a:hover {
+            transform: scale(1.02);
+            box-shadow: 0 6px 20px rgba(74, 74, 78, 0.15);
+        }
+    }
 </style>

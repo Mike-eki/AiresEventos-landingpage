@@ -4,26 +4,26 @@ import Birthday from "../icons/Birthday.astro";
 import PrivateMeeting from "../icons/PrivateMeeting.astro";
 ---
 
-<section>
-    <hgroup>
-        <div class="section-titles">
+<section class="other-celebrations">
+    <hgroup class="container-celebrations">
+        <div class="celebration-titles">
             <h2>OTRAS</h2>
             <h2>CELEBRACIONES</h2>
             <h2>ESPECIALES</h2>
         </div>
-        <img src="images/other-main.jpg" alt="">
+        <img class="celebrations-bg-1" src="images/other-main.webp" alt="">
         <ul class="suggested-events">
-            <li><p>Cumpleaños</p><Birthday /></li>
+            <li class="item"><p>Cumpleaños</p><Birthday /></li>
             <li><div class="vertical-line"></div></li>
-            <li><p>Aniversarios</p><Anniversary /></li>
+            <li class="item"><p>Aniversarios</p><Anniversary /></li>
             <li><div class="vertical-line"></div></li>
-            <li><p>Reuniones íntimas</p><PrivateMeeting /></li>
+            <li class="item"><p class="p-3">Reuniones íntimas</p><PrivateMeeting /></li>
         </ul>
     </hgroup>
-    <img src="images/other-1.jpg" alt="">
-    <article class="final-text">
+    <img class="celebrations-bg-2" src="images/other-1.webp" alt="">
+    <article class="celebration-final-text">
         <p>Siempre hay motivos para celebrar rodeados de quienes más querés, en un espacio versátil que se adapta a cada ocasión.</p>
-        <img src="images/other-2.jpg" alt="">
+        <img class="celebrations-bg-3" src="images/other-2.webp" alt="">
     </article>
 </section>
 
@@ -42,7 +42,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         justify-content: center;
         align-items: center;
     }
-    .section-titles {
+    .celebration-titles {
         position: absolute;
         color: var(--light-beige);
 
@@ -52,8 +52,9 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         align-items: center;
         gap: calc(var(--space) * 1.5);
 
+        z-index: 10000;
     }
-    .section-titles h2 {
+    .celebration-titles h2 {
 
 
         font-weight: 700;
@@ -82,14 +83,18 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         bottom: -2.5rem;
         left: 50%;
         transform: translateX(-50%);
+        z-index: 10;
 
         display: flex;
-        gap: calc(var(--space) * 2);
+        gap: calc(var(--space) * 0.75);
         background-color: var(--light-beige);
         color: var(--desert-sand);
-        padding: 1rem 2rem;
+        
         border-radius: 100rem;
         font-weight: 500;
+
+        padding-inline: calc(var(--space) * 0.75)
+
     }
     .suggested-events li {
         display: flex;
@@ -108,35 +113,167 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
             ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
         );  
     }
+    .item {
+        --min-font-size: 0rem;
+        --max-font-size: 1.2rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        padding-block: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+    }
+    .p-3 {
+        max-width: 10ch;
+    }
     .vertical-line {
-        border-left: 4px solid var(--desert-sand);
+        border-left: 2px solid var(--desert-sand);
         height: 100%;
         align-self: center;
     }
 
-    .final-text {
+    .celebration-final-text {
         position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
     }
 
-    .final-text p{
+    .celebration-final-text p{
         position: absolute;
         top: -3rem;
+        z-index: 10000;
 
-        width: 56ch;
+        max-width: 56ch;
 
         background-color: var(--light-beige);
         color: var(--desert-sand);
 
-        padding-inline: calc(var(--space) * 2);
-        padding-block: calc(var(--space) * 2.5);
         margin-inline: auto;
 
         border-radius: 100rem;
 
         text-align: center;
         
+        --min-font-size: 0.8rem;
+        --max-font-size: 1.2rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+
+        padding: calc(var(--space) * 1.5);
+        margin-inline: calc(var(--space) * 1);
+
     }
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar los títulos de la sección - con trigger específico para los títulos
+    gsap.from('.celebration-titles h2', {
+      scrollTrigger: {
+        trigger: '.celebration-titles',
+        start: 'top 85%',
+        end: 'bottom 60%',
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      stagger: 0.4, // Más tiempo entre cada título
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen principal del hgroup - con z-index bajo
+    gsap.from('.celebrations-bg-1', {
+      scrollTrigger: {
+        trigger: '.container-celebrations',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.5,
+      delay: 0.5, // Más delay para que los títulos aparezcan primero
+      ease: 'power3.out'
+    });
+    
+    // Animar la lista de eventos sugeridos - con z-index alto
+    gsap.from('.suggested-events .item', {
+      scrollTrigger: {
+        trigger: '.suggested-events',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.4, // Más stagger para mejor secuencia
+      ease: 'power3.out'
+    });
+    
+    // Animar las líneas verticales - después de los items
+    gsap.from('.vertical-line', {
+      scrollTrigger: {
+        trigger: '.suggested-events',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scaleY: 0,
+      duration: 0.8,
+      stagger: 0.3,
+      delay: 0.2, // Aparecen después de los items
+      ease: 'power3.out'
+    });
+    
+    // Animar la segunda imagen
+    gsap.from('.celebrations-bg-2', {
+      scrollTrigger: {
+        trigger: '.celebrations-bg-2',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      y: 80,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+    
+    // Animar el texto final - con z-index muy alto
+    gsap.from('.celebration-final-text p', {
+      scrollTrigger: {
+        trigger: '.celebration-final-text',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      x: -40,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen final - después del texto
+    gsap.from('.celebrations-bg-3', {
+      scrollTrigger: {
+        trigger: '.celebration-final-text',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      y: 60,
+      duration: 1.2,
+      delay: 0.5, // Más delay para que el texto aparezca primero
+      ease: 'power3.out'
+    });
+
+    ScrollTrigger.refresh();
+  });
+</script>

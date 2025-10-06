@@ -1,39 +1,39 @@
-<section>
-    <hgroup>
-        <div class="titles">
+<section class="catering-section">
+    <hgroup class="catering-titles-container">
+        <div class="catering-titles">
             <h2>AIRES</h2>
             <h2>CATERING</h2>
         </div>
-        <img class="bg" src="images/ac-bg.jpg" alt="">
-        <img class="logo" src="images/ac-logo-white.png" alt="">
+        <img class="catering-bg" src="images/ac-bg.webp" alt="">
+        <img class="catering-logo" src="images/ac-logo-white.png" alt="">
     </hgroup>
-    <article class="information">
-        <header class="text-info">
-            <img class="iso" src="images/iso-ac-black.png" alt="">
+    <article class="catering-information">
+        <header class="catering-text-info">
+            <img class="catering-iso" src="images/iso-ac-black.png" alt="">
             <p>Tu evento merece una propuesta gastronómica única, por eso, nuestro equipo de chefs trabaja junto a vos para diseñar un menú que se adapte a tus gustos, estilo y necesidades.</p>
             <p>Desde entradas irresistibles hasta postres que conquistan, cada detalle está pensado para sorprender.</p>
         </header>
         <picture class="chef-frame">
-            <img src="images/ac-chef.jpg" alt="">
+            <img class="chef-image" src="images/ac-chef.webp" alt="">
         </picture>
     </article>
 
-    <ul class="container">
-        <li class="item-container">
-            <p class="item item-l round-r">Menús diseñados a medida según el tipo de evento.</p>
-            <img class="image-item" src="images/ac-1.jpg" alt="">
+    <ul class="container-of-items">
+        <li class="catering-item-container">
+            <p class="catering-item catering-item-l catering-round-r c-item-1">Menús diseñados a medida según el tipo de evento.</p>
+            <img class="catering-item-img catering-item-img-1" src="images/ac-1.webp" alt="">
         </li>
-        <li class="item-container">
-            <p class="item item-r round-l">Opciones gourmet, tradicionales y de vanguardia.</p>
-            <img class="image-item" src="images/ac-2.jpg" alt="">
+        <li class="catering-item-container">
+            <p class="catering-item catering-item-r catering-round-l c-item-2">Opciones gourmet, tradicionales y de vanguardia.</p>
+            <img class="catering-item-img catering-item-img-2" src="images/ac-2.webp" alt="">
         </li>
-        <li class="item-container">
-            <p class="item item-l round-r">Catering adaptable a cócteles, almuerzos, cenas de gala o reuniones informales</p>
-            <img class="image-item" src="images/ac-3.jpg" alt="">
+        <li class="catering-item-container">
+            <p class="catering-item catering-item-l catering-round-r c-item-3">Catering adaptable a cócteles, almuerzos, cenas de gala o reuniones informales</p>
+            <img class="catering-item-img catering-item-img-3" src="images/ac-3.webp" alt="">
         </li>
-        <li class="item-container">
-            <p class="item item-r round-l">Presentación cuidada al detalle para una experiencia visual y gastronómica impecable.</p>
-            <img class="image-item" src="images/ac-4.jpg" alt="">
+        <li class="catering-item-container">
+            <p class="catering-item catering-item-r catering-round-l c-item-4">Presentación cuidada al detalle para una experiencia visual y gastronómica impecable.</p>
+            <img class="catering-item-img catering-item-img-4" src="images/ac-4.webp" alt="">
         </li>
     </ul>
 </section>
@@ -50,34 +50,34 @@
         object-fit: cover;
     }
 
-    hgroup {
+    .catering-titles-container {
         position: relative;
         display: flex;
         justify-content: center;
         align-items: center;
     }
 
-    .bg {
+    .catering-bg {
         z-index: -1;
         aspect-ratio: 1 / 1;
         filter: brightness(0.5);
         height: 100vh;
     }
-    .logo {
+    .catering-logo {
         position: absolute;
         top: 1rem; right: 1rem;
         z-index: 10;
         width: 10rem;
     }
 
-    .titles {
+    .catering-titles {
 
         position: absolute;
         display: flex;
         flex-direction: column;
         gap: calc(var(--space) * 1.5);
     }
-    .titles h2 {
+    .catering-titles h2 {
         color: var(--white);
 
         text-align: center;
@@ -96,12 +96,12 @@
         );
     }
 
-    .information {
+    .catering-information {
         display: flex;
         min-height: 70vh;
         overflow: hidden;
     }
-    .iso {
+    .catering-iso {
         width: 100%;
         margin-inline: auto;
 
@@ -118,7 +118,7 @@
             ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
         );
     }
-    .text-info {
+    .catering-text-info {
         display: flex;
         flex-direction: column;
         gap: calc(var(--space) * 2.5);
@@ -128,10 +128,10 @@
 
         padding-block: calc(var(--space) * 1.5)
     }
-    .text-info > * {
+    .catering-text-info > * {
         padding-inline: calc(var(--space) * 2);
     }
-    .text-info p {
+    .catering-text-info p {
         color: var(--desert-sand);
     }
     .chef-frame {
@@ -143,7 +143,7 @@
     }
 
     @media (max-width: 600px) {
-        .information {
+        .catering-information {
             flex-direction: column;
         }
         .text-info {
@@ -154,17 +154,18 @@
         }
     }
 
-    .item-container {
+    .catering-item-container {
         position: relative;
     }
-    .item-l {
+    .catering-item-l {
         top: 0; left: 0
     }
-    .item-r {
+    .catering-item-r {
         top: 0; right: 0;
     }
-    .item {
+    .catering-item {
         position: absolute;
+        z-index: 100000;
         max-width: 30ch;
         text-wrap: pretty;
 
@@ -184,14 +185,196 @@
             ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
         );
     }
-    .item.round-r {
+    .catering-item.catering-round-r {
         border-radius: 0 100rem 100rem 0;
     }
-    .item.round-l {
+    .catering-item.catering-round-l {
         border-radius: 100rem 0 0 100rem;
     }
-    .image-item {
-        aspect-ratio: 16/12;
+    .catering-item-img {
+        aspect-ratio: 16/9;
     }
 
 </style>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar los títulos de catering - con trigger específico
+    gsap.from('.catering-titles h2', {
+      scrollTrigger: {
+        trigger: '.catering-titles',
+        start: 'top 85%',
+        end: 'bottom 60%',
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      stagger: 0.4,
+      ease: 'power3.out'
+    });
+    
+    // Animar el logo - aparece rápido después de los títulos
+    gsap.from('.catering-logo', {
+      scrollTrigger: {
+        trigger: '.catering-titles-container',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 0.8,
+      duration: 0.8,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen de fondo - con z-index bajo
+    gsap.from('.catering-bg', {
+      scrollTrigger: {
+        trigger: '.catering-titles-container',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.5,
+      delay: 0.1,
+      ease: 'power3.out'
+    });
+    
+    // Animar el logo ISO - elemento importante
+    gsap.from('.catering-iso', {
+      scrollTrigger: {
+        trigger: '.catering-text-info',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 0.9,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar los párrafos de información principal
+    gsap.from('.catering-text-info p', {
+      scrollTrigger: {
+        trigger: '.catering-text-info',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      x: -40,
+      duration: 1.2,
+      stagger: 0.3,
+      delay: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen del chef
+    gsap.from('.chef-image', {
+      scrollTrigger: {
+        trigger: '.catering-information',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      x: 40,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+    
+    // Animar cada texto de item individualmente con triggers específicos
+    gsap.from('.c-item-1', {
+      scrollTrigger: {
+        trigger: '.c-item-1',
+        start: 'top 90%',
+        // markers: true,
+      },
+      opacity: 0,
+      x: -60,
+      duration: 1.1,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.c-item-2', {
+      scrollTrigger: {
+        trigger: '.c-item-2',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: 60,
+      duration: 1.1,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.c-item-3', {
+      scrollTrigger: {
+        trigger: '.c-item-3',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: -60,
+      duration: 1.1,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.c-item-4', {
+      scrollTrigger: {
+        trigger: '.c-item-4',
+        start: 'top 90%',
+      },
+      opacity: 0,
+      x: 60,
+      duration: 1.1,
+      ease: 'power3.out'
+    });
+    
+    // Animar las imágenes de items individualmente con efectos de zoom
+    gsap.from('.catering-item-img-1', {
+      scrollTrigger: {
+        trigger: '.catering-item-img-1',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.catering-item-img-2', {
+      scrollTrigger: {
+        trigger: '.catering-item-img-2',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.catering-item-img-3', {
+      scrollTrigger: {
+        trigger: '.catering-item-img-3',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+    
+    gsap.from('.catering-item-img-4', {
+      scrollTrigger: {
+        trigger: '.catering-item-img-4',
+        start: 'top 85%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.3,
+      ease: 'power3.out'
+    });
+
+    ScrollTrigger.refresh();
+  });
+</script>

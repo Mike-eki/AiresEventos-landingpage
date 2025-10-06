@@ -1,19 +1,24 @@
+---
+import TitleEventos from "../title-svgs/TitleEventos.astro";
+---
+
 <section class="social-events">
     <hgroup class="title">
-        <h2 class="silouette">EVENTOS</h2>
+        <h2 class="silouette" style="display: none;">EVENTOS</h2>
+        <TitleEventos />
         <h2>SOCIALES</h2>
     </hgroup>
-    <img class="main-bg" src="images/intro-bg.jpg" alt="Eventos Sociales">
+    <img class="main-bg" src="images/intro-bg.webp" alt="Eventos Sociales">
     <div class="text">
-        <p>Cada evento merece ser único. Por eso te acompañamos en cada detalle, combinando un salón preparado para todo tipo de celebraciones con la gastronomía premium de Aires Catering, para que vos solo disfrutes</p>
+        <p>Cada evento merece ser único. Por eso te acompañamos en cada detalle, combinando un salón preparado para todo tipo de celebraciones con la gastronomía premium de Aires Catering, para que vos solo disfrutes.</p>
     </div>
 </section>
 
 <picture class="gallery">
-    <img class="top-left" src="images/social-1.jpg" alt="">
-    <img class="top-right" src="images/social-2.jpg" alt="">
-    <img class="bottom-left" src="images/social-3.jpg" alt="">
-    <img class="bottom-right" src="images/social-4.jpeg" alt="">
+    <img class="top-left" src="images/social-1.webp" alt="">
+    <img class="top-right" src="images/social-2.webp" alt="">
+    <img class="bottom-left" src="images/social-3.webp" alt="">
+    <img class="bottom-right" src="images/social-4.webp" alt="">
 </picture>
 
 <style>
@@ -34,6 +39,8 @@
         display: flex;
         flex-direction: column;
         gap: calc(var(--space) * 1.5);
+
+        z-index: 10000;
     }
     .text {
         bottom: 50%;
@@ -48,9 +55,20 @@
     }
 
     h2 {
-        font-size: clamp(4rem, 15vw, 6rem);
-        font-weight: 700;
+        font-weight: 900;
         text-align: left;
+        
+        --min-font-size: 4rem;
+        --max-font-size: 9rem;
+        --min-viewport: 375px;
+        --max-viewport: 1400px;
+
+        font-size: calc(
+            var(--min-font-size) + 
+            (var(--max-font-size) - var(--min-font-size)) * 
+            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+        );
+
     }
     @supports (-webkit-text-stroke: 3px black) {
         .silouette {
@@ -69,6 +87,7 @@
         height: 45rem;
         border-radius: 100rem 0 0 100rem;
         margin-left: auto;
+        filter: brightness(0.5);
     }
 
     .gallery {
@@ -95,3 +114,73 @@
         border-radius: 0 0 100rem 100rem;
     }
 </style>
+
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Animaciones cuando la sección entra en vista
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animar el título y el SVG
+    gsap.from(['.social-events .title h2', '.social-events .title svg'], {
+      scrollTrigger: {
+        trigger: '.social-events',
+        start: 'top 80%',
+        // markers: true, // Descomentar para depuración visual
+      },
+      opacity: 0,
+      y: 30,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar el texto
+    gsap.from('.social-events .text p', {
+      scrollTrigger: {
+        trigger: '.social-events',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      x: -30,
+      duration: 1,
+      delay: 0.3,
+      ease: 'power3.out'
+    });
+    
+    // Animar la imagen principal
+    gsap.from('.social-events .main-bg', {
+      scrollTrigger: {
+        trigger: '.social-events',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      scale: 1.1,
+      duration: 1.2,
+      ease: 'power3.out'
+    });
+    
+    // Animar las imágenes de la galería con stagger
+    gsap.from([
+      '.gallery .top-left',
+      '.gallery .top-right',
+      '.gallery .bottom-left',
+      '.gallery .bottom-right'
+    ], {
+      scrollTrigger: {
+        trigger: '.gallery',
+        start: 'top 80%',
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out'
+    });
+
+    ScrollTrigger.refresh(); // Refresca triggers después de carga
+  });
+</script>
