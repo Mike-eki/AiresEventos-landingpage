@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 
     site: "https://mike-eki.github.io/",
-    // base: 'AiresEventos-landingpage',
+    base: 'AiresEventos-landingpage',
 
     experimental: {
         fonts: [
