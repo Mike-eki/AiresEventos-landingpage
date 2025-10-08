@@ -33,6 +33,9 @@ import TitleXV from "../title-svgs/TitleXV.astro";
 
 
 <style>
+    #xv-anos {
+        overflow: hidden;
+    }
     .xv-section {
         background-color: var(--violet-gum);
         padding-top: calc(var(--space) * 4);
@@ -178,11 +181,7 @@ import TitleXV from "../title-svgs/TitleXV.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(1.1rem, 0.9269rem + 0.7692vw, 1.6rem);
     }
 </style>
 

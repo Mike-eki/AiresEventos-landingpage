@@ -13,6 +13,7 @@
 
 <style>
     section {
+        overflow: hidden;
         position: relative;
 
         display: flex;
@@ -36,7 +37,7 @@
     }
     .logo {
         display: block;
-        max-width: 100%;
+        /* max-width: 100%; */
         height: auto;
         object-fit: cover;
 
@@ -45,17 +46,16 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        max-width: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        width: clamp(5rem, 4.3077rem + 3.0769vw, 7rem);
     }
 
     picture {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
+    }
+    picture > * {
+        min-height: 40vh;
     }
     img:not(.logo) {
         /* position: absolute; */
@@ -72,13 +72,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        border-bottom-right-radius: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
-
-        min-height: 40vh;
+        border-bottom-right-radius: clamp(9rem, 5.1923rem + 16.9231vw, 20rem);
     }
     .img-2 {
         --min-font-size: 9rem;
@@ -86,13 +80,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        border-bottom-left-radius: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
-
-        min-height: 40vh;
+        border-bottom-left-radius: clamp(9rem, 5.1923rem + 16.9231vw, 20rem);
     }
     .img-3 {
         --min-font-size: 9rem;
@@ -100,13 +88,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        border-top-right-radius: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
-
-        min-height: 40vh;
+        border-top-right-radius: clamp(9rem, 5.1923rem + 16.9231vw, 20rem);
     }
     .img-4 {
 
@@ -115,14 +97,8 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        border-top-left-radius: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
-
-
-        min-height: 40vh;
+        border-top-left-radius: clamp(9rem, 5.1923rem + 16.9231vw, 20rem);
+        
     }
 
 </style>

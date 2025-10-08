@@ -3,7 +3,7 @@ import StarFill from "../icons/StarFill.astro";
 import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
 ---
 
-<section class="testimonios-section-gsap">
+<section id="testimonios" class="testimonios-section-gsap">
     <hgroup class="title-container testimonios-titles-container-gsap">
         <div class="title testimonios-title-gsap">
             <TitleTestiMonios />
@@ -88,6 +88,9 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
 </section>
 
 <style>
+    #testimonios {
+        overflow: hidden;
+    }
     ul, li {
         list-style: none;
         margin: 0;
@@ -118,11 +121,7 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
         --min-viewport: 400px;
         --max-viewport: 1400px;
 
-        padding-right: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        padding-right: clamp(2rem, 0rem + 8vw, 7rem);
         
     }
     .title {
@@ -194,11 +193,7 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(0.8rem, 0.7268rem + 0.3122vw, 1rem);
     }
 
     .author-container {
@@ -215,11 +210,7 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        padding-inline: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        padding-inline: clamp(1.5rem, 0.5854rem + 3.9024vw, 4rem);
 
         : calc(var(--space) * 4);
         padding-block: calc(var(--space) * 4);
@@ -235,11 +226,7 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(1.2rem, 1.0537rem + 0.6244vw, 1.6rem);
     }
 
     .stars {
@@ -264,13 +251,9 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        padding-inline: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        padding-inline: clamp(1.5rem, 0.5854rem + 3.9024vw, 4rem);
 
-        : calc(var(--space) * 4);
+
         padding-block: calc(var(--space) * 4);
 
         border-radius: 0 100rem 100rem 0;
@@ -345,7 +328,7 @@ import TitleTestiMonios from "../title-svgs/TitleTestiMonios.astro";
         transform-origin: 50% 50%;
         fill: var(--violet-gum);
         font-family: var(--font-switzer-light);
-        font-size: 10px;
+        font-size: 8px;
     }
 
 </style>

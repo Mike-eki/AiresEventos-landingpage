@@ -18,6 +18,8 @@ import Contacto from "../sections/Contacto.astro";
 import Footer from "../sections/Footer.astro";
 import WhatsAppFixed from "../components/WhatsAppFixed.astro";
 import Loader from "../components/Loader.astro";
+import AcButtonCTA from "../components/AcButtonCTA.astro";
+import Menu from "../components/Menu.astro";
 
 const imagenesIntro = [
     { src: "images/card-1.webp", alt: "Foto de decoración del salon" },
@@ -191,7 +193,6 @@ const imagenesTestimonios = [
                         "name": "Contacto",
                         "item": "https://aireseventos.com.ar/#contacto"
                     }
-                    
                 ]
             }
         </script>
@@ -248,6 +249,7 @@ const imagenesTestimonios = [
         <Loader />
         <Hero />
         <WhatsAppFixed />
+        <Menu />
         <Intro />
         <Carrusel images={imagenesIntro} />
         <IntroText />
@@ -260,7 +262,7 @@ const imagenesTestimonios = [
         <EventosCorporativos />
         <ButtonCTA contentText="Consúltanos" />
         <AiresCatering />
-        <ButtonCTA contentText="Consúltanos sobre Aires Catering" />
+        <AcButtonCTA />
         <Diferencial />
         <Testimonios />
         <Carrusel images={imagenesTestimonios} />
@@ -287,15 +289,34 @@ const imagenesTestimonios = [
     * {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+    }
+
+    [id] {
+        scroll-margin-top: 65px; /* Ajusta este valor según el espacio deseado */
     }
 
     body {
+        /* position: relative; */
+
         margin: 0;
         padding: 0;
         font-family: var(--font-parkinsans), sans-serif;
-        height: 100%;
-        overflow-x: hidden;
+        /* height: 100%; */
+        /* overflow-x: hidden; */
+        /* width: 100%; */
     }
+    /* body::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    background: rgba(255, 0, 0, 0.1);
+    pointer-events: none;
+    z-index: 9999;
+    } */
+
     h1,
     h2,
     h3,

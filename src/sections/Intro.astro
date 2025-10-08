@@ -11,8 +11,12 @@
 </section>
 
 <style>
+
+  #intro {
+    overflow: hidden;
+  }
     hgroup {
-        max-width: 60ch;
+        
 
         display: flex;
         flex-direction: column;
@@ -21,6 +25,7 @@
         text-align: center;
     }
     hgroup > p {
+        /* max-width: 80ch; */
         text-wrap: pretty;
         color: var(--desert-sand)
     }
@@ -48,7 +53,7 @@
     .half-circle {
         display: block;
 
-        max-width: 100%;
+        /* max-width: 100%; */
         width: 100%;
         
         outline: 4px solid var(--desert-sand);
@@ -68,11 +73,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(1.1rem, 0.9269rem + 0.7692vw, 1.6rem);
     }
 </style>
 

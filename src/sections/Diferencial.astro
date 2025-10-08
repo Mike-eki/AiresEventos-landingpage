@@ -10,7 +10,7 @@ import Team from "../icons/Team.astro"
 import Temperature from "../icons/Temperature.astro";
 ---
 
-<section class="difference-section">
+<section id="diferencial" class="difference-section">
     <hgroup class="title-container">
         <div class="titles">
             <h2 class="dif-title-1">Nuestro</h2>
@@ -58,8 +58,9 @@ import Temperature from "../icons/Temperature.astro";
         </li>
     </ul>
 
-    <footer class="where">
+    <footer id="ubicacion" class="where">
         <h2>UBICACIÓN</h2>
+        <address class="address"><strong>Av. Eva Perdón al 8812 - Rosario - Santa Fe</strong></address>
         <p>Nuestra ubicación estratégica te conecta fácilmente con toda la ciudad y alrededores: a minutos del centro, con rápido acceso desde zona norte, sur, Funes y Roldán.</p>
 
         <div class="where-action">
@@ -73,6 +74,9 @@ import Temperature from "../icons/Temperature.astro";
 
 <style>
 
+    #diferencial {
+      overflow: hidden;
+    }
     section {
         background-color: var(--light-beige);
         padding-bottom: calc(var(--space) * 3);
@@ -120,11 +124,7 @@ import Temperature from "../icons/Temperature.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(2rem, 1.2683rem + 3.122vw, 4rem);
     }
     .title-container img {
         object-position: center;
@@ -210,11 +210,7 @@ import Temperature from "../icons/Temperature.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(3rem, 1.1707rem + 7.8049vw, 8rem);
     }
     .where p {
         color: var(--desert-sand);
@@ -275,6 +271,14 @@ import Temperature from "../icons/Temperature.astro";
     }
     .round-rect.right {
         border-radius: 100rem 0 0 100rem;
+    }
+
+    .address {
+      display: inline; color: var(--desert-sand); text-align: center;
+      text-wrap-mode: balance;
+      font-size: clamp(1.1rem, 0.9269rem + 0.7692vw, 1.6rem);
+      padding-inline: var(--space);
+
     }
 
 </style>

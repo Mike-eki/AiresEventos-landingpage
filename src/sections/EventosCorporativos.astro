@@ -14,6 +14,9 @@
 
 
 <style>
+  #eventos-corporativos {
+    overflow: hidden;
+  }
     img {
         display: block;
         width: 100%;
@@ -55,11 +58,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(2.5rem, 1.2195rem + 5.4634vw, 6rem);
     }
 
     .corporative-events-text {

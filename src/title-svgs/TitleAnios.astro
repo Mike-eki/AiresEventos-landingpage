@@ -15,23 +15,15 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        bottom: calc(
-            var(--min-bottom-size) + 
-            (var(--max-bottom-size) - var(--min-bottom-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        bottom: clamp(0.625rem, 0.1677rem + 1.9512vw, 1.875rem);
 
         --min-width-size: 350px;
         --max-width-size: 750px;
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        width: calc(
-            var(--min-width-size) + 
-            (var(--max-width-size) - var(--min-width-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        width: clamp(21.875rem, 12.7287rem + 39.0244vw, 46.875rem);
 
-        z-index: 100000;
+        z-index: 100;
     }
 </style>

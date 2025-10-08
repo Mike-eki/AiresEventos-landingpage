@@ -17,11 +17,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        width: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        width: clamp(18.75rem, 10.747rem + 34.1463vw, 40.625rem);
 
         z-index: 10000;
     }

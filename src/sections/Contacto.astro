@@ -21,7 +21,7 @@ import Form from "../components/Form.astro"
 
     section {
         
-
+      overflow: hidden;
         background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
                             url('images/contact-bg.webp');
         background-size: cover;
@@ -52,11 +52,7 @@ import Form from "../components/Form.astro"
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(2rem, 0.5366rem + 6.2439vw, 6rem);
 
         margin-bottom: calc(var(--space) * 3);
     }

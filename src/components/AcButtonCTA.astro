@@ -1,12 +1,13 @@
 ---
-const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCircleColor = "var(--desert-sand)", bgColor = "var(--light-beige)", contentText = "Boton CTA"} = Astro.props
+const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCircleColor = "var(--desert-sand)", bgColor = "var(--light-beige)"} = Astro.props
 ---
 
 <footer class="cta-component" style=`background-color: ${bgColor}`>
     <div class="half-circle left" style=`outline-color: ${halfCircleColor};`></div>
     <a href="#contacto" class="cta-button"
     style=`background-color: ${btnColor}; color: ${textColor}`>
-        {contentText}
+        <p class="line-1">Consulta sobre</p>
+        <p class="line-2">Aires Catering</p>
     </a>
     <div class="half-circle right" style=`outline-color: ${halfCircleColor};`></div>
 </footer>
@@ -176,5 +177,12 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
             transform: scale(1.02);
             box-shadow: 0 6px 20px rgba(74, 74, 78, 0.15);
         }
+    }
+
+    .line-1, .line-2 {
+        text-wrap-mode: nowrap ;
+    }
+    .line-1 {
+        margin-bottom: 0.75rem;
     }
 </style>

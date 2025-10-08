@@ -28,6 +28,9 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
 </section>
 
 <style>
+  #celebraciones {
+    overflow: hidden;
+  }
     ul, li {
         list-style: none;
         margin: 0;
@@ -52,7 +55,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         align-items: center;
         gap: calc(var(--space) * 1.5);
 
-        z-index: 10000;
+        z-index: 100;
     }
     .celebration-titles h2 {
 
@@ -64,11 +67,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(2.5rem, 1.2195rem + 5.4634vw, 6rem);
     }
 
     img {
@@ -107,11 +106,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );  
+        font-size: clamp(0.6rem, 0.3805rem + 0.9366vw, 1.2rem);
     }
     .item {
         --min-font-size: 0rem;
@@ -119,11 +114,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        padding-block: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        padding-block: clamp(0rem, -0.439rem + 1.8732vw, 1.2rem);
     }
     .p-3 {
         max-width: 10ch;
@@ -162,11 +153,7 @@ import PrivateMeeting from "../icons/PrivateMeeting.astro";
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(0.8rem, 0.6537rem + 0.6244vw, 1.2rem);
 
         padding: calc(var(--space) * 1.5);
         margin-inline: calc(var(--space) * 1);

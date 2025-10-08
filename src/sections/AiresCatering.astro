@@ -1,4 +1,4 @@
-<section class="catering-section">
+<section id="aires-catering" class="catering-section">
     <hgroup class="catering-titles-container">
         <div class="catering-titles">
             <h2>AIRES</h2>
@@ -39,6 +39,9 @@
 </section>
 
 <style>
+  #aires-catering {
+    overflow: hidden;
+  }
     ul, li {
         list-style: none;
         padding: 0;
@@ -89,11 +92,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        font-size: clamp(2.5rem, 1.2195rem + 5.4634vw, 6rem);
     }
 
     .catering-information {
@@ -112,11 +111,7 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        max-width: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
+        max-width: clamp(6rem, 1.6098rem + 18.7317vw, 18rem);
     }
     .catering-text-info {
         display: flex;
@@ -146,7 +141,7 @@
         .catering-information {
             flex-direction: column;
         }
-        .text-info {
+        .catering-text-info {
             width: 100%;
         }
         .chef-frame {

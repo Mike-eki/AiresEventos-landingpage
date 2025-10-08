@@ -1,0 +1,310 @@
+<header class="site-header">
+  <div class="container">
+    <div class="logo">
+      <a href="#"><img src="images/logo-as-white.png" alt="Logo de Aires Salon" width="36"></a>
+    </div>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle-input" />
+    <label for="menu-toggle" class="menu-toggle-label" aria-label="Toggle menu">
+      <div class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </label>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <ul>
+        <li><a href="#intro" class="nav-link">Introducción</a></li>
+
+        <li class="has-dropdown">
+          <input type="checkbox" id="dropdown-servicios" class="dropdown-toggle-input" />
+          <label for="dropdown-servicios" class="nav-link dropdown-toggle">
+            Servicios
+            <span class="arrow">▾</span>
+          </label>
+          <ul class="dropdown" aria-label="Servicios submenu">
+            <li><a href="#eventos-sociales">Eventos Sociales</a></li>
+            <li><a href="#bodas">Bodas</a></li>
+            <li><a href="#xv-anos">XV Años</a></li>
+            <li><a href="#celebraciones">Otras Celebraciones</a></li>
+            <li><a href="#eventos-corporativos">Eventos Corporativos</a></li>
+            <li><a href="#aires-catering">Aires Catering</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <input type="checkbox" id="dropdown-nosotros" class="dropdown-toggle-input" />
+          <label for="dropdown-nosotros" class="nav-link dropdown-toggle">
+            Nosotros
+            <span class="arrow">▾</span>
+          </label>
+          <ul class="dropdown" aria-label="Nosotros submenu">
+            <li><a href="#diferencial">Nuestro Diferencial</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+          </ul>
+        </li>
+
+        <li class="has-dropdown">
+          <input type="checkbox" id="dropdown-contacto" class="dropdown-toggle-input" />
+          <label for="dropdown-contacto" class="nav-link dropdown-toggle">
+            Contacto
+            <span class="arrow">▾</span>
+          </label>
+          <ul class="dropdown" aria-label="Contacto submenu">
+            <li><a href="#ubicacion">Ubicación</a></li>
+            <li><a href="#contacto">Formulario</a></li>
+            <li><a href="#redes">Redes Sociales</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <style>
+
+    /* Variables de diseño */
+    :root {
+      --color-primary: var(--violet-gum);
+      --color-secondary: var(--light-beige);
+      --color-light: var(--violet-gum);
+      --color-text: var(--desert-sand);
+      --color-text-light: var(--light-beige);
+      --font-main: 'Segoe UI', system-ui, sans-serif;
+      --transition: all 0.3s ease;  
+      --shadow: 0 2px 10px rgba(0,0,0,0.1);
+      --border-radius: 4px;
+    }
+
+    a {
+        cursor:pointer
+    }
+
+    /* Reset básico */
+    .site-header *,
+    .site-header *::before,
+    .site-header *::after {
+      box-sizing: border-box;
+    }
+
+    .site-header {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+  padding: 1rem 0;
+  position: sticky; /* 👈 clave: sticky, no fixed */
+  top: 0;           /* 👈 se pega al tope de la ventana al hacer scroll */
+  z-index: 999000;
+  box-shadow: var(--shadow);
+  /* Opcional: transición suave al pegarse */
+  transition: box-shadow 0.3s ease;
+}
+
+/* Opcional: sombra más fuerte cuando está "pegado" */
+.site-header.stuck {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* Logo */
+    .logo a {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-light);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .logo a:hover {
+      color: var(--color-secondary);
+    }
+
+    /* Menú toggle (hamburguesa) */
+    .menu-toggle-input {
+      display: none;
+    }
+
+    .menu-toggle-label {
+      display: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 21px;
+    }
+
+    .hamburger span {
+      width: 100%;
+      height: 3px;
+      background-color: var(--color-text-light);
+      border-radius: 2px;
+      transition: var(--transition);
+    }
+
+    /* Navegación principal */
+    .main-nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--color-text-light);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-link:hover,
+    .dropdown-toggle:hover {
+      color: var(--color-secondary);
+    }
+
+    /* Dropdowns */
+    .has-dropdown {
+      position: relative;
+    }
+
+    .dropdown-toggle-input {
+      display: none;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      /* min-width: 220px; */
+      list-style: none;
+      padding: 0.75rem 0;
+      margin: 0;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: var(--transition);
+      z-index: 1001;
+
+      display: flex;
+        flex-direction: column;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 0.6rem 1.25rem;
+      color: var(--color-text);
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .dropdown a:hover {
+      background-color: var(--color-light);
+      color: var(--color-secondary);
+    }
+
+    /* Mostrar dropdown al hacer hover (desktop) */
+    @media (min-width: 768px) {
+      .has-dropdown:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+
+    /* Flecha del dropdown */
+    .arrow {
+      margin-left: 0.4rem;
+      font-size: 0.8rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* En mobile, usar checkbox para abrir/cerrar */
+    @media (max-width: 767px) {
+      .menu-toggle-label {
+        display: block;
+      }
+
+      .main-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: var(--color-primary);
+        /* padding: 1.5rem; */
+        box-shadow: var(--shadow);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+      }
+
+      .menu-toggle-input:checked ~ .main-nav {
+        max-height: 1500px;
+        padding: 1.5rem;
+      }
+
+      .main-nav ul {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      /* Dropdown en mobile */
+      .dropdown {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: rgba(255, 255, 255, 0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+      }
+
+      .dropdown-toggle-input:checked ~ .dropdown {
+        max-height: 300px;
+      }
+
+      .dropdown a {
+        color: var(--color-text-light);
+        padding-left: 2rem;
+      }
+
+      .dropdown a:hover {
+        background: rgba(219, 175, 118, 0.2);
+        color: white;
+      }
+
+      /* Rotar flecha al abrir */
+      .dropdown-toggle-input:checked + .dropdown-toggle .arrow {
+        transform: rotate(180deg);
+      }
+    }
+  </style>
+
+<script>
+  // Cierra el menú móvil al hacer clic en cualquier enlace
+  document.querySelectorAll('.main-nav a').forEach(link => {
+    link.addEventListener('click', () => {
+      const menuToggle = document.getElementById('menu-toggle');
+      if (menuToggle) (menuToggle as HTMLInputElement).checked = false;
+    });
+  });
+</script>

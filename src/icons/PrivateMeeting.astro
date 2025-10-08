@@ -19,10 +19,6 @@
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
-        width: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );  
+        width: clamp(1.75rem, 1.1098rem + 2.7317vw, 3.5rem);
     }
 </style>
