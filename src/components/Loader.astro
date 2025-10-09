@@ -1,186 +1,185 @@
----
-// Loader.astro - Componente de loader
----
-
 <div id="loader" class="loader-wrapper">
-    <div class="loader-content">
-        <img src="images/logo-as-white.png" alt="Logo" class="loader-logo" />
-        <div class="spinner"></div>
-        <p class="loader-text">Preparando tu experiencia...</p>
-        <div class="progress-bar">
-            <div class="progress-fill" id="progress"></div>
-        </div>
+  <div class="loader-content">
+    <img src="images/logo-as-white.png" alt="Logo" class="loader-logo" />
+    <div class="spinner"></div>
+    <p class="loader-text">Preparando tu experiencia...</p>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress"></div>
     </div>
+  </div>
 </div>
 
 <style>
-    .loader-wrapper {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100vh;
-        background: linear-gradient(
-            135deg,
-            var(--light-beige) 0%,
-            var(--violet-gum) 100%
-        );
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 99999999;
-        transition:
-            opacity 0.5s ease,
-            visibility 0.5s ease;
-    }
+  .loader-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(
+      135deg,
+      var(--light-beige) 0%,
+      var(--violet-gum) 100%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999;
+    transition:
+      opacity 0.5s ease,
+      visibility 0.5s ease;
+  }
 
-    .loader-wrapper.hidden {
-        opacity: 0;
-        visibility: hidden;
-    }
+  .loader-wrapper.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
 
-    .loader-content {
-        text-align: center;
-        color: white;
-    }
+  .loader-content {
+    text-align: center;
+    color: white;
+  }
 
-    .spinner {
-        width: 60px;
-        height: 60px;
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-top: 4px solid white;
-        border-radius: 50%;
-        margin: 0 auto 20px;
-        animation: spin 1s linear infinite;
-    }
+  .spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    animation: spin 1s linear infinite;
+  }
 
-    @keyframes spin {
-        0% {
-            transform: rotate(0deg);
-        }
-        100% {
-            transform: rotate(360deg);
-        }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
     }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 
-    .loader-text {
-        font-size: 18px;
-        font-weight: 500;
-        margin: 0 0 20px;
-        letter-spacing: 0.5px;
-        font-family:
-            system-ui,
-            -apple-system,
-            sans-serif;
-    }
+  .loader-text {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    letter-spacing: 0.5px;
+    font-family:
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
 
-    .progress-bar {
-        width: 200px;
-        height: 4px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 2px;
-        overflow: hidden;
-        margin: 0 auto;
-    }
+  .progress-bar {
+    width: 200px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+  }
 
-    .progress-fill {
-        height: 100%;
-        background: white;
-        width: 0%;
-        transition: width 0.3s ease;
-        border-radius: 2px;
-    }
+  .progress-fill {
+    height: 100%;
+    background: white;
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 2px;
+  }
 
-    .loader-logo {
-        width: 120px;
-    }
+  .loader-logo {
+    width: 120px;
+  }
 </style>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-  const loader = document.getElementById('loader');
-  const progress = document.getElementById('progress');
-  
-  if (!loader || !progress) return;
+  document.addEventListener("DOMContentLoaded", () => {
+    const loader = document.getElementById("loader");
+    const progress = document.getElementById("progress");
 
-  // Obtener todas las imágenes, scripts y recursos
-  const images = Array.from(document.images);
-  const scripts = Array.from(document.querySelectorAll('script[src]'));
-  const stylesheets = Array.from(document.querySelectorAll('link[rel="stylesheet"]'));
-  
-  // Calcular total de recursos
-  const totalResources = images.length + scripts.length + stylesheets.length;
-  let loadedResources = 0;
+    if (!loader || !progress) return;
 
-  // Función para actualizar progreso
-  function updateProgress() {
-    loadedResources++;
-    const percentage = (loadedResources / totalResources) * 100;
-    (progress as HTMLElement).style.width = percentage + '%';
-    
-    // Si todo está cargado
-    if (loadedResources >= totalResources) {
-      completeLoading();
+    // Obtener todas las imágenes, scripts y recursos
+    const images = Array.from(document.images);
+    const scripts = Array.from(document.querySelectorAll("script[src]"));
+    const stylesheets = Array.from(
+      document.querySelectorAll('link[rel="stylesheet"]'),
+    );
+
+    // Calcular total de recursos
+    const totalResources = images.length + scripts.length + stylesheets.length;
+    let loadedResources = 0;
+
+    // Función para actualizar progreso
+    function updateProgress() {
+      loadedResources++;
+      const percentage = (loadedResources / totalResources) * 100;
+      (progress as HTMLElement).style.width = percentage + "%";
+
+      // Si todo está cargado
+      if (loadedResources >= totalResources) {
+        completeLoading();
+      }
     }
-  }
 
-  // Función para completar la carga
-  function completeLoading() {
-    (progress as HTMLElement).style.width = '100%';
-    
-    setTimeout(() => {
-      (loader as HTMLElement).classList.add('hidden');
-      
-      // Remover del DOM después de la transición
+    // Función para completar la carga
+    function completeLoading() {
+      (progress as HTMLElement).style.width = "100%";
+
       setTimeout(() => {
-        (loader as HTMLElement).remove();
-      }, 500);
-    }, 300);
-  }
+        (loader as HTMLElement).classList.add("hidden");
 
-  // Monitorear carga de imágenes
-  if (images.length > 0) {
-    images.forEach(img => {
-      if (img.complete) {
-        updateProgress();
-      } else {
-        img.addEventListener('load', updateProgress);
-        img.addEventListener('error', updateProgress); // Contar errores también
+        // Remover del DOM después de la transición
+        setTimeout(() => {
+          (loader as HTMLElement).remove();
+        }, 500);
+      }, 300);
+    }
+
+    // Monitorear carga de imágenes
+    if (images.length > 0) {
+      images.forEach((img) => {
+        if (img.complete) {
+          updateProgress();
+        } else {
+          img.addEventListener("load", updateProgress);
+          img.addEventListener("error", updateProgress); // Contar errores también
+        }
+      });
+    }
+
+    // Monitorear carga de scripts
+    if (scripts.length > 0) {
+      scripts.forEach((script) => {
+        script.addEventListener("load", updateProgress);
+        script.addEventListener("error", updateProgress);
+      });
+    }
+
+    // Monitorear carga de hojas de estilo
+    if (stylesheets.length > 0) {
+      stylesheets.forEach((link) => {
+        const stylesheet = link as HTMLLinkElement;
+        if (stylesheet.sheet) {
+          updateProgress();
+        } else {
+          stylesheet.addEventListener("load", updateProgress);
+          stylesheet.addEventListener("error", updateProgress);
+        }
+      });
+    }
+
+    // Fallback: si no hay recursos o por seguridad, esperar al evento load
+    window.addEventListener("load", () => {
+      // Si aún no se completó, forzar completado
+      if (!loader.classList.contains("hidden")) {
+        completeLoading();
       }
     });
-  }
 
-  // Monitorear carga de scripts
-  if (scripts.length > 0) {
-    scripts.forEach(script => {
-      script.addEventListener('load', updateProgress);
-      script.addEventListener('error', updateProgress);
-    });
-  }
-
-  // Monitorear carga de hojas de estilo
-  if (stylesheets.length > 0) {
-    stylesheets.forEach(link => {
-      const stylesheet = link as HTMLLinkElement;
-      if (stylesheet.sheet) {
-        updateProgress();
-      } else {
-        stylesheet.addEventListener('load', updateProgress);
-        stylesheet.addEventListener('error', updateProgress);
-      }
-    });
-  }
-
-  // Fallback: si no hay recursos o por seguridad, esperar al evento load
-  window.addEventListener('load', () => {
-    // Si aún no se completó, forzar completado
-    if (!loader.classList.contains('hidden')) {
+    // Si no hay recursos que cargar, completar inmediatamente
+    if (totalResources === 0) {
       completeLoading();
     }
   });
-
-  // Si no hay recursos que cargar, completar inmediatamente
-  if (totalResources === 0) {
-    completeLoading();
-  }
-});</script>
+</script>

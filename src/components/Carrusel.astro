@@ -20,20 +20,21 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 ---
 
 <nav class="scroll-layout" data-carousel={carouselId}>
-
   <button class="nav-button prev" aria-label="Imagen anterior">
     <ArrowLeft />
   </button>
 
   <menu class="carousel">
     <ul class="content">
-      {images.map((image) => (
-        <article class="card">
-          <picture class="image-frame">
-            <img src={image.src} alt={image.alt}>
-          </picture>
-        </article>
-      ))}
+      {
+        images.map((image) => (
+          <article class="card">
+            <picture class="image-frame">
+              <img src={image.src} alt={image.alt} />
+            </picture>
+          </article>
+        ))
+      }
     </ul>
   </menu>
 
@@ -41,7 +42,6 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
     <ArrowRight />
   </button>
 </nav>
-
 
 <style>
   .scroll-layout {
@@ -191,13 +191,17 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
 
 <script>
   // Seleccionar TODOS los carruseles en la página
-  const carousels = document.querySelectorAll('.scroll-layout');
+  const carousels = document.querySelectorAll(".scroll-layout");
 
   carousels.forEach((scrollLayout) => {
-    const carousel = scrollLayout.querySelector('.content');
-    const prevBtn = scrollLayout.querySelector('.nav-button.prev') as HTMLButtonElement | null;
-    const nextBtn = scrollLayout.querySelector('.nav-button.next') as HTMLButtonElement | null;
-    const cards = scrollLayout.querySelectorAll('.card');
+    const carousel = scrollLayout.querySelector(".content");
+    const prevBtn = scrollLayout.querySelector(
+      ".nav-button.prev",
+    ) as HTMLButtonElement | null;
+    const nextBtn = scrollLayout.querySelector(
+      ".nav-button.next",
+    ) as HTMLButtonElement | null;
+    const cards = scrollLayout.querySelectorAll(".card");
 
     if (carousel && prevBtn && nextBtn && cards.length > 0) {
       const cardWidth = (cards[0] as HTMLElement).offsetWidth;
@@ -215,29 +219,29 @@ const carouselId = `carousel-${Math.random().toString(36).substr(2, 9)}`;
       }
 
       // Navegar a la izquierda
-      prevBtn.addEventListener('click', () => {
+      prevBtn.addEventListener("click", () => {
         carousel.scrollBy({
           left: -scrollAmount,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       });
 
       // Navegar a la derecha
-      nextBtn.addEventListener('click', () => {
+      nextBtn.addEventListener("click", () => {
         carousel.scrollBy({
           left: scrollAmount,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
       });
 
       // Actualizar botones al hacer scroll
-      carousel.addEventListener('scroll', updateButtons);
+      carousel.addEventListener("scroll", updateButtons);
 
       // Actualizar botones al cargar
       updateButtons();
 
       // Actualizar al redimensionar la ventana
-      window.addEventListener('resize', updateButtons);
+      window.addEventListener("resize", updateButtons);
     }
   });
 </script>

@@ -1,15 +1,25 @@
 ---
-const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCircleColor = "var(--desert-sand)", bgColor = "var(--light-beige)"} = Astro.props
+const {
+    btnColor = "var(--violet-gum)",
+    textColor = "var(--light-beige)",
+    halfCircleColor = "var(--desert-sand)",
+    bgColor = "var(--light-beige)",
+} = Astro.props;
 ---
 
 <footer class="cta-component" style=`background-color: ${bgColor}`>
-    <div class="half-circle left" style=`outline-color: ${halfCircleColor};`></div>
-    <a href="#contacto" class="cta-button"
-    style=`background-color: ${btnColor}; color: ${textColor}`>
+    <div class="half-circle left" style=`outline-color: ${halfCircleColor};`>
+    </div>
+    <a
+        href="#contacto"
+        class="cta-button"
+        style=`background-color: ${btnColor}; color: ${textColor}`
+    >
         <p class="line-1">Consulta sobre</p>
         <p class="line-2">Aires Catering</p>
     </a>
-    <div class="half-circle right" style=`outline-color: ${halfCircleColor};`></div>
+    <div class="half-circle right" style=`outline-color: ${halfCircleColor};`>
+    </div>
 </footer>
 
 <style>
@@ -27,19 +37,19 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
         max-width: 100%;
         width: 100%;
         outline: 4px solid #000;
-        
+
         /* Animación de entrada - VISIBLE por defecto */
         opacity: 1;
         transform: scaleX(1);
-        
+
         /* Transición para efectos hover */
         transition: transform 0.4s ease;
     }
-    
+
     .half-circle.left {
         border-radius: 0 100rem 100rem 0;
     }
-    
+
     .half-circle.right {
         border-radius: 100rem 0 0 100rem;
     }
@@ -52,18 +62,18 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
         --max-viewport: 1400px;
 
         font-size: clamp(1rem, 0.2683rem + 3.122vw, 3rem);
-        
+
         text-align: center;
         padding: calc(var(--space) * 2);
         border-radius: 100rem;
-        
+
         /* VISIBLE por defecto */
         opacity: 1;
         transform: scale(1);
-        
+
         /* Transición para efectos hover */
         transition: all 0.3s ease;
-        
+
         /* Animación de pulso - solo comienza después de 3 segundos */
         animation: pulse 2s ease-in-out 3s infinite;
     }
@@ -87,7 +97,8 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
 
     /* Keyframes para animación de pulso */
     @keyframes pulse {
-        0%, 100% {
+        0%,
+        100% {
             transform: scale(1);
             /* Halo violeta oscuro muy sutil */
             box-shadow: 0 0 0 0 rgba(74, 54, 104, 0.1);
@@ -104,21 +115,20 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
         animation: none;
     }
 
-    /* Si quieres animaciones de entrada, puedes usar esta clase adicional */
     .cta-component.animate-in .half-circle {
         opacity: 0;
         transform: scaleX(0);
         animation: halfCircleExpand 1s ease-out forwards;
     }
-    
+
     .cta-component.animate-in .half-circle.left {
         animation-delay: 0.1s;
     }
-    
+
     .cta-component.animate-in .half-circle.right {
         animation-delay: 0.3s;
     }
-    
+
     .cta-component.animate-in .cta-button {
         opacity: 0;
         transform: scale(0.8);
@@ -156,14 +166,15 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
             gap: calc(var(--space) * 1);
             padding-block: calc(var(--space) * 1.5);
         }
-        
+
         a {
             padding: calc(var(--space) * 1.5);
             animation: pulseMobile 2s ease-in-out 3s infinite;
         }
-        
+
         @keyframes pulseMobile {
-            0%, 100% {
+            0%,
+            100% {
                 transform: scale(1);
                 box-shadow: 0 0 0 0 rgba(74, 54, 104, 0.1);
             }
@@ -172,15 +183,16 @@ const {btnColor = "var(--violet-gum)", textColor = "var(--light-beige)", halfCir
                 box-shadow: 0 0 0 6px rgba(74, 54, 104, 0);
             }
         }
-        
+
         a:hover {
             transform: scale(1.02);
             box-shadow: 0 6px 20px rgba(74, 74, 78, 0.15);
         }
     }
 
-    .line-1, .line-2 {
-        text-wrap-mode: nowrap ;
+    .line-1,
+    .line-2 {
+        text-wrap-mode: nowrap;
     }
     .line-1 {
         margin-bottom: 0.75rem;

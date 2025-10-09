@@ -10,27 +10,48 @@ import TitleXV from "../title-svgs/TitleXV.astro";
         <h2 class="xv-title-bottom" style="display: none;">AÑOS</h2>
         <TitleAnios />
         <picture class="xv-frame">
-            <img src="images/xv-main.webp" alt="Foto de pareja de novios sonriendo en su boda">
+            <img
+                src="images/xv-main.webp"
+                alt="Foto de pareja de novios sonriendo en su boda"
+            />
         </picture>
     </header>
 
     <picture class="xv-gallery">
-        <img class="xv-top-left" src="images/xv-1.webp" alt="Foto de pareja de novios en su boda">
-        <img class="xv-top-right" src="images/xv-2.webp" alt="Foto de pareja de novios en su boda">
-        <img class="xv-bottom-left" src="images/xv-3.webp" alt="Foto de pareja de novios en su boda">
-        <img class="xv-bottom-right" src="images/xv-4.webp" alt="Foto de pareja de novios en su boda">
+        <img
+            class="xv-top-left"
+            src="images/xv-1.webp"
+            alt="Foto de pareja de novios en su boda"
+        />
+        <img
+            class="xv-top-right"
+            src="images/xv-2.webp"
+            alt="Foto de pareja de novios en su boda"
+        />
+        <img
+            class="xv-bottom-left"
+            src="images/xv-3.webp"
+            alt="Foto de pareja de novios en su boda"
+        />
+        <img
+            class="xv-bottom-right"
+            src="images/xv-4.webp"
+            alt="Foto de pareja de novios en su boda"
+        />
     </picture>
-    
+
     <footer class="xv-text">
         <div class="xv-half-circle left"></div>
         <hgroup class="xv-text-container">
             <p><strong>Cumplir XV es único</strong></p>
-            <p>Nuestro espacio está pensado para que tu gran noche sea tal como la imaginaste.</p>
+            <p>
+                Nuestro espacio está pensado para que tu gran noche sea tal como
+                la imaginaste.
+            </p>
         </hgroup>
         <div class="xv-half-circle right"></div>
     </footer>
 </section>
-
 
 <style>
     #xv-anos {
@@ -55,9 +76,7 @@ import TitleXV from "../title-svgs/TitleXV.astro";
     }
 
     .xv-title-top {
-
         font-weight: 700;
-
 
         --min-font-size: 6rem;
         --max-font-size: 12rem;
@@ -65,9 +84,11 @@ import TitleXV from "../title-svgs/TitleXV.astro";
         --max-viewport: 1400px;
 
         font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+            var(--min-font-size) + (var(--max-font-size) - var(--min-font-size)) *
+                (
+                    (100vw - var(--min-viewport)) /
+                        (var(--max-viewport) - var(--min-viewport))
+                )
         );
     }
     .xv-title-bottom {
@@ -83,9 +104,11 @@ import TitleXV from "../title-svgs/TitleXV.astro";
         --max-viewport: 1400px;
 
         font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
+            var(--min-font-size) + (var(--max-font-size) - var(--min-font-size)) *
+                (
+                    (100vw - var(--min-viewport)) /
+                        (var(--max-viewport) - var(--min-viewport))
+                )
         );
     }
 
@@ -102,7 +125,6 @@ import TitleXV from "../title-svgs/TitleXV.astro";
     }
 
     .xv-frame img {
-        
         object-position: -1050px center;
         object-position: center;
 
@@ -128,17 +150,16 @@ import TitleXV from "../title-svgs/TitleXV.astro";
         flex-direction: column;
 
         gap: calc(var(--space) * 2);
-        
+
         text-align: center;
     }
-
 
     .xv-half-circle {
         display: block;
 
         max-width: 100%;
         width: 100%;
-        
+
         outline: 4px solid var(--light-beige);
     }
     .xv-half-circle.left {
@@ -147,7 +168,6 @@ import TitleXV from "../title-svgs/TitleXV.astro";
     .xv-half-circle.right {
         border-radius: 100rem 0 0 100rem;
     }
-
 
     .xv-gallery {
         display: grid;
@@ -173,7 +193,6 @@ import TitleXV from "../title-svgs/TitleXV.astro";
         object-position: top;
     }
 
-
     strong {
         text-wrap: nowrap;
         --min-font-size: 1.2rem;
@@ -186,85 +205,90 @@ import TitleXV from "../title-svgs/TitleXV.astro";
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Animaciones cuando la sección entra en vista
-  document.addEventListener('DOMContentLoaded', () => {
-    // Animar los títulos SVG (XV y AÑOS)
-    gsap.from(['.xv-main svg:nth-of-type(1)', '.xv-main svg:nth-of-type(2)'], {
-      scrollTrigger: {
-        trigger: '.xv-section',
-        start: 'top 80%',
-        // markers: true, // Descomentar para depuración visual
-      },
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      stagger: 0.3,
-      ease: 'power3.out'
-    });
-    
-    // Animar la imagen principal
-    gsap.from('.xv-frame img', {
-      scrollTrigger: {
-        trigger: '.xv-section',
-        start: 'top 80%',
-      },
-      opacity: 0,
-      scale: 1.1,
-      duration: 1.2,
-      delay: 0.2,
-      ease: 'power3.out'
-    });
-    
-    // Animar las imágenes de la galería con stagger
-    gsap.from([
-      '.xv-top-left',
-      '.xv-top-right',
-      '.xv-bottom-left',
-      '.xv-bottom-right'
-    ], {
-      scrollTrigger: {
-        trigger: '.xv-gallery',
-        start: 'top 80%',
-      },
-      opacity: 0,
-      y: 50,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power3.out'
-    });
-    
-    // Animar el texto
-    gsap.from('.xv-text-container p', {
-      scrollTrigger: {
-        trigger: '.xv-text',
-        start: 'top 80%',
-      },
-      opacity: 0,
-      x: -30,
-      duration: 1,
-      delay: 0.3,
-      stagger: 0.2,
-      ease: 'power3.out'
-    });
-    
-    // Animar los semicírculos
-    gsap.from('.xv-half-circle', {
-      scrollTrigger: {
-        trigger: '.xv-text',
-        start: 'top 80%',
-      },
-      opacity: 0,
-      scaleX: 0,
-      duration: 1,
-      stagger: 0.3,
-      ease: 'power3.out'
-    });
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    ScrollTrigger.refresh(); // Refresca triggers después de carga
-  });
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animaciones cuando la sección entra en vista
+    document.addEventListener("DOMContentLoaded", () => {
+        // Animar los títulos SVG (XV y AÑOS)
+        gsap.from(
+            [".xv-main svg:nth-of-type(1)", ".xv-main svg:nth-of-type(2)"],
+            {
+                scrollTrigger: {
+                    trigger: ".xv-section",
+                    start: "top 80%",
+                },
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                stagger: 0.3,
+                ease: "power3.out",
+            },
+        );
+
+        // Animar la imagen principal
+        gsap.from(".xv-frame img", {
+            scrollTrigger: {
+                trigger: ".xv-section",
+                start: "top 80%",
+            },
+            opacity: 0,
+            scale: 1.1,
+            duration: 1.2,
+            delay: 0.2,
+            ease: "power3.out",
+        });
+
+        // Animar las imágenes de la galería con stagger
+        gsap.from(
+            [
+                ".xv-top-left",
+                ".xv-top-right",
+                ".xv-bottom-left",
+                ".xv-bottom-right",
+            ],
+            {
+                scrollTrigger: {
+                    trigger: ".xv-gallery",
+                    start: "top 80%",
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                stagger: 0.2,
+                ease: "power3.out",
+            },
+        );
+
+        // Animar el texto
+        gsap.from(".xv-text-container p", {
+            scrollTrigger: {
+                trigger: ".xv-text",
+                start: "top 80%",
+            },
+            opacity: 0,
+            x: -30,
+            duration: 1,
+            delay: 0.3,
+            stagger: 0.2,
+            ease: "power3.out",
+        });
+
+        // Animar los semicírculos
+        gsap.from(".xv-half-circle", {
+            scrollTrigger: {
+                trigger: ".xv-text",
+                start: "top 80%",
+            },
+            opacity: 0,
+            scaleX: 0,
+            duration: 1,
+            stagger: 0.3,
+            ease: "power3.out",
+        });
+
+        ScrollTrigger.refresh(); // Refresca triggers después de carga
+    });
 </script>

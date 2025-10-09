@@ -1,133 +1,130 @@
 ---
-import Form from "../components/Form.astro"
+import Form from "../components/Form.astro";
 ---
 
 <section class="contact-gsap">
-    <div class="space contact-container-gsap">
-        <div id="contacto" class="rounded-container contact-inner-container-gsap">
-            <hgroup class="contact-title-container-gsap">
-                <h2 class="contact-title-gsap">CONTACTANOS</h2>
-            </hgroup>
-            <Form class="contact-form-gsap" />
-        </div>
+  <div class="space contact-container-gsap">
+    <div id="contacto" class="rounded-container contact-inner-container-gsap">
+      <hgroup class="contact-title-container-gsap">
+        <h2 class="contact-title-gsap">CONTACTANOS</h2>
+      </hgroup>
+      <Form class="contact-form-gsap" />
     </div>
+  </div>
 </section>
 
 <style>
+  .space {
+    padding-block: calc(var(--space) * 4);
+    padding-right: calc(var(--space) * 4);
+  }
+
+  section {
+    overflow: hidden;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+      url("/images/contact-bg.webp");
+    background-size: cover;
+    background-position: center;
+  }
+
+  .rounded-container {
+    padding-block: calc(var(--space) * 2);
+    padding-right: calc(var(--space) * 6);
+    padding-left: calc(var(--space) * 2);
+
+    outline: 4px solid var(--white);
+    border-radius: 0 100rem 100rem 0;
+  }
+  @media (max-width: 660px) {
+    .rounded-container {
+      outline: none;
+    }
+  }
+
+  hgroup h2 {
+    color: var(--white);
+
+    --min-font-size: 2rem;
+    --max-font-size: 6rem;
+    --min-viewport: 375px;
+    --max-viewport: 1400px;
+
+    font-size: clamp(2rem, 0.5366rem + 6.2439vw, 6rem);
+
+    margin-bottom: calc(var(--space) * 3);
+  }
+
+  @media screen and (max-width: 660px) {
     .space {
-        padding-block: calc(var(--space) * 4);
-        padding-right: calc(var(--space) * 4);
-    }
-
-    section {
-        
-      overflow: hidden;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                            url('images/contact-bg.webp');
-        background-size: cover;
-        background-position: center;
-    }
-
-    .rounded-container {
-
-        padding-block: calc(var(--space) * 2);
-        padding-right: calc(var(--space) * 6);
-        padding-left: calc(var(--space) * 2);
-
-        outline: 4px solid var(--white);
-        border-radius: 0 100rem 100rem 0;
-
-    }
-    @media (max-width: 660px) {
-    .rounded-container {
-        outline: none;
-    }
-}
-
-    hgroup h2 {
-        color: var(--white);
-
-        --min-font-size: 2rem;
-        --max-font-size: 6rem;
-        --min-viewport: 375px;
-        --max-viewport: 1400px;
-
-        font-size: clamp(2rem, 0.5366rem + 6.2439vw, 6rem);
-
-        margin-bottom: calc(var(--space) * 3);
-    }
-
-    @media screen and (max-width: 660px) {
-    .space {
-        padding: 0;
+      padding: 0;
     }
     .rounded-container {
-        padding-left: 0;
-        padding-right: 0;
-        padding-inline: calc(var(--space) * 2);
+      padding-left: 0;
+      padding-right: 0;
+      padding-inline: calc(var(--space) * 2);
     }
     form {
-        max-width: 100%;
+      max-width: 100%;
     }
-}
+  }
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
   gsap.registerPlugin(ScrollTrigger);
-  
+
   // Animaciones cuando la sección entra en vista
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Animar el contenedor principal de contacto
-    gsap.from('.contact-container-gsap', {
+    gsap.from(".contact-container-gsap", {
       scrollTrigger: {
-        trigger: '.contact-gsap',
-        start: 'top 85%',
+        trigger: ".contact-gsap",
+        start: "top 85%",
         // markers: true, // Descomentar para depuración visual
       },
       opacity: 0,
       y: 50,
       duration: 1.2,
-      ease: 'power3.out'
+      ease: "power3.out",
     });
-    
+
     // Animar el contenedor interno redondeado
-    gsap.from('.contact-inner-container-gsap', {
+    gsap.from(".contact-inner-container-gsap", {
       scrollTrigger: {
-        trigger: '.contact-inner-container-gsap',
-        start: 'top 90%',
+        trigger: ".contact-inner-container-gsap",
+        start: "top 90%",
       },
       opacity: 0,
       x: -100,
       duration: 1.3,
-      ease: 'power3.out'
+      ease: "power3.out",
     });
-    
+
     // Animar el título de contacto
-    gsap.from('.contact-title-gsap', {
+    gsap.from(".contact-title-gsap", {
       scrollTrigger: {
-        trigger: '.contact-title-container-gsap',
-        start: 'top 90%',
+        trigger: ".contact-title-container-gsap",
+        start: "top 90%",
       },
       opacity: 0,
       y: 30,
       duration: 1.1,
-      ease: 'power3.out'
+      ease: "power3.out",
     });
-    
+
     // Animar el formulario
-    gsap.from('.contact-form-gsap', {
+    gsap.from(".contact-form-gsap", {
       scrollTrigger: {
-        trigger: '.contact-form-gsap',
-        start: 'top 85%',
+        trigger: ".contact-form-gsap",
+        start: "top 85%",
       },
       opacity: 0,
       x: -50,
       duration: 1.2,
       delay: 0.3,
-      ease: 'power3.out'
+      ease: "power3.out",
     });
 
     ScrollTrigger.refresh();

@@ -1,15 +1,34 @@
 <section class="intro-images">
     <figure>
-        <img class="logo" src="images/logo-as-black.png" alt="Logo de Aires Eventos">
+        <img
+            class="logo"
+            src="images/logo-as-black.png"
+            alt="Logo de Aires Eventos"
+        />
     </figure>
     <picture>
-        <img class="img-1" src="images/intro-images-1.webp" alt="Foto de decoración del salon">
-        <img class="img-2" src="images/intro-images-2.webp" alt="Foto de decoración del salon">
-        <img class="img-3" src="images/intro-images-3.webp" alt="Foto de decoración del salon">
-        <img class="img-4" src="images/intro-images-4.webp" alt="Foto de decoración del salon">
+        <img
+            class="img-1"
+            src="images/intro-images-1.webp"
+            alt="Foto de decoración del salon"
+        />
+        <img
+            class="img-2"
+            src="images/intro-images-2.webp"
+            alt="Foto de decoración del salon"
+        />
+        <img
+            class="img-3"
+            src="images/intro-images-3.webp"
+            alt="Foto de decoración del salon"
+        />
+        <img
+            class="img-4"
+            src="images/intro-images-4.webp"
+            alt="Foto de decoración del salon"
+        />
     </picture>
 </section>
-
 
 <style>
     section {
@@ -29,15 +48,14 @@
         margin: 0;
         padding: 0;
 
-
         position: absolute;
-        top: 50%; left: 50%;
+        top: 50%;
+        left: 50%;
         transform: translate(-50%, -50%);
         z-index: 10;
     }
     .logo {
         display: block;
-        /* max-width: 100%; */
         height: auto;
         object-fit: cover;
 
@@ -58,8 +76,6 @@
         min-height: 40vh;
     }
     img:not(.logo) {
-        /* position: absolute; */
-
         display: block;
         max-width: 100%;
         aspect-ratio: 16/9;
@@ -91,53 +107,57 @@
         border-top-right-radius: clamp(9rem, 5.1923rem + 16.9231vw, 20rem);
     }
     .img-4 {
-
         --min-font-size: 9rem;
         --max-font-size: 20rem;
         --min-viewport: 375px;
         --max-viewport: 1400px;
 
         border-top-left-radius: clamp(9rem, 5.1923rem + 16.9231vw, 20rem);
-        
     }
-
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Animaciones cuando la sección entra en vista
-  document.addEventListener('DOMContentLoaded', () => {
-    // Animar el logo
-    gsap.from('.intro-images .logo', {
-      scrollTrigger: {
-        trigger: '.intro-images',
-        start: 'top 80%', // Ajustable a 'top bottom' si se activa demasiado pronto/tarde
-        // markers: true, // Descomentar para depuración visual
-      },
-      opacity: 0,
-      scale: 1.1,
-      duration: 1.2,
-      ease: 'power3.out'
-    });
-    
-    // Animar las imágenes con stagger para efecto secuencial
-    gsap.from(['.intro-images .img-1', '.intro-images .img-2', '.intro-images .img-3', '.intro-images .img-4'], {
-      scrollTrigger: {
-        trigger: '.intro-images',
-        start: 'top 80%',
-        // markers: true,
-      },
-      opacity: 0,
-      y: 50, // Cambié a y para un efecto de "subir" uniforme, pero puedes restaurar x para laterales
-      duration: 1,
-      stagger: 0.2, // Retraso secuencial entre imágenes
-      ease: 'power3.out'
-    });
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    ScrollTrigger.refresh(); // Refresca triggers después de carga
-  });
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animaciones cuando la sección entra en vista
+    document.addEventListener("DOMContentLoaded", () => {
+        // Animar el logo
+        gsap.from(".intro-images .logo", {
+            scrollTrigger: {
+                trigger: ".intro-images",
+                start: "top 80%",
+            },
+            opacity: 0,
+            scale: 1.1,
+            duration: 1.2,
+            ease: "power3.out",
+        });
+
+        // Animar las imágenes con stagger para efecto secuencial
+        gsap.from(
+            [
+                ".intro-images .img-1",
+                ".intro-images .img-2",
+                ".intro-images .img-3",
+                ".intro-images .img-4",
+            ],
+            {
+                scrollTrigger: {
+                    trigger: ".intro-images",
+                    start: "top 80%",
+                    // markers: true,
+                },
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                stagger: 0.2, // Retraso secuencial entre imágenes
+                ease: "power3.out",
+            },
+        );
+
+        ScrollTrigger.refresh(); // Refresca triggers después de carga
+    });
 </script>

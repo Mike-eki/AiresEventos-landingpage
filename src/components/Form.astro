@@ -1,7 +1,4 @@
----
-// Form.astro
----
-<form id="contactForm" action="https://aireseventos.com.ar/email/submit.php">
+<form id="contactForm" action="https://aireseventos.com.ar/email/submit.php" method="POST">
     <label for="nombre">
         <input name="nombre" type="text" placeholder="Nombre" required>
     </label>
@@ -96,11 +93,6 @@ input::placeholder, textarea::placeholder {
     opacity: 0.8;
 }
 
-@media screen and (max-width: 660px) {
-    form {
-        max-width: 100%;
-    }
-}
 
 button[type="submit"] {
     appearance: none;
@@ -135,7 +127,7 @@ button[type="submit"]:disabled {
 }
 
 #formResponse {
-    margin-top: 1rem;
+    width: 60%;
 }
 
 .response-message {
@@ -163,6 +155,16 @@ button[type="submit"]:disabled {
     background-color: #fff3cd;
     color: #856404;
     border-color: #ffeaa7;
+}
+
+@media screen and (max-width: 660px) {
+    form {
+        max-width: 100%;
+    }
+
+    #formResponse {
+        width: 100%;
+    }
 }
 </style>
 
@@ -219,7 +221,19 @@ button[type="submit"]:disabled {
             if (response.ok && result.success) {
                 console.log('✅ Éxito:', result.message);
                 responseDiv.innerHTML = `
-                    <div class="response-message response-success">
+                    <div class="response-message response-success"
+                    style="padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    border: 2px solid;
+    font-size: 1rem;
+    line-height: 1.5;
+    
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+    "
+                    >
                         ✅ ${result.message}
                     </div>
                 `;
@@ -234,7 +248,19 @@ button[type="submit"]:disabled {
                 console.error('❌ Error del servidor:', result.error);
                 const errorMsg = result.error || 'Error desconocido en el servidor';
                 responseDiv.innerHTML = `
-                    <div class="response-message response-error">
+                    <div class="response-message response-error"
+                    style="padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    border: 2px solid;
+    font-size: 1rem;
+    line-height: 1.5;
+    
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+    "
+                    >
                         ❌ ${errorMsg}
                     </div>
                 `;
@@ -243,7 +269,19 @@ button[type="submit"]:disabled {
             // Manejar error de red
             console.error('🌐 Error de conexión:', error);
             responseDiv.innerHTML = `
-                <div class="response-message response-warning">
+                <div class="response-message response-warning"
+                style="padding: 1rem;
+    border-radius: 6px;
+    margin: 1rem 0;
+    border: 2px solid;
+    font-size: 1rem;
+    line-height: 1.5;
+    
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: #ffeaa7;
+    "
+                >
                     ⚠️ Error de conexión. Por favor, verifica tu internet e intenta nuevamente.
                 </div>
             `;
@@ -255,222 +293,3 @@ button[type="submit"]:disabled {
     });
 })();
 </script>
-
-<!-- <form id="contactForm" action="https://aireseventos.com.ar/email/submit.php">
-    <label for="nombre">
-        <input name="nombre" type="text" placeholder="Nombre" required>
-    </label>
-    <label for="correo">
-        <input name="correo" type="email" placeholder="Email" required>
-    </label>
-    <label for="telefono">
-        <input name="telefono" type="tel" placeholder="Teléfono" required>
-    </label>
-    <label for="evento">
-        <select name="evento" id="event-type" required>
-            <option selected disabled>Tipo de evento</option>
-            <option>Boda</option>
-            <option>XV Años</option>
-            <option>Cumpleaños</option>
-            <option>Aniversario</option>
-            <option>Corporativo</option>
-            <option>Reunión intima</option>
-            <option>Otro</option>
-        </select>
-    </label>
-    <label for="fecha">
-        <input name="fecha" type="text" onfocus="(this.type='date')" onblur="(this.type='text')" placeholder="Fecha del evento" required>
-    </label>
-    <label for="invitados">
-        <input name="invitados" type="number" placeholder="Cantidad de invitados" required>
-    </label>
-    <label for="mensaje">
-        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
-    </label>
-    <button type="submit" id="submitButton">Enviar</button>
-</form>
-<div id="formResponse"></div>
-
-<style>
-
-form {
-    display: flex;
-    flex-direction: column;
-
-    gap: calc(var(--space) * 2);
-
-    --min-font-size: 15rem;
-    --max-font-size: 40rem;
-    --min-viewport: 500px;
-    --max-viewport: 1400px;
-
-    max-width: clamp(15rem, 5.8537rem + 39.0244vw, 40rem);
-}
-
-input, select, textarea {
-    appearance: none;
-    background-color: transparent;
-
-    border: none;
-    border-bottom: 3px solid var(--white);
-
-    color: var(--white);
-
-    outline: none;
-
-    width: 100%;
-
-    font-family: inherit;
-    
-    --min-font-size: 0.8rem;
-    --max-font-size: 1.2rem;
-    --min-viewport: 375px;
-    --max-viewport: 1400px;
-
-    font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    opacity: 0;
-}
-
-textarea {
-    resize: vertical;
-}
-
-textarea:focus, input:focus, select:focus {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-option {
-    color: var(--light-beige);
-    background-color: var(--desert-sand);
-}
-
-input::placeholder, textarea::placeholder {
-    color: var(--white);
-}
-
-@media screen and (max-width: 660px) {
-    form {
-        max-width: 100%;
-    }
-}
-
-button[type="submit"] {
-    appearance: none;
-    padding: 1.5rem;
-    border-radius: 100rem;
-    background-color: rgba(170, 167, 158, 0.2);
-    border: 4px solid var(--desert-sand);
-    color: var(--light-beige);
-    font-family: inherit;
-    
-
-    --min-font-size: 1.5rem;
-        --max-font-size: 2rem;
-        --min-viewport: 375px;
-        --max-viewport: 1400px;
-
-        font-size: calc(
-            var(--min-font-size) + 
-            (var(--max-font-size) - var(--min-font-size)) * 
-            ((100vw - var(--min-viewport)) / (var(--max-viewport) - var(--min-viewport)))
-        );
-
-    cursor: pointer;
-}
-button[type="submit"]:hover {
-    background-color: rgba(170, 167, 158, 1);
-}
-
-
-</style>
-
-<script>
-  (function() {
-    const form = document.getElementById('contactForm') as HTMLFormElement | null;
-    if (!form) {
-        console.error('Formulario #contactForm no encontrado');
-        return;
-    }
-
-    const submitButton = document.getElementById('submitButton') as HTMLButtonElement | null;
-    const responseDiv = document.getElementById('formResponse');
-
-    if (!submitButton || !responseDiv) {
-        console.error('Elementos del formulario no encontrados');
-        return;
-    }
-
-    // Prevenir submit tradicional
-    form.addEventListener('submit', function(e) {
-        e.preventDefault();
-    }, { once: true });
-
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-
-        if (submitButton) submitButton.disabled = true;
-        const originalText = submitButton ? submitButton.textContent : '';
-        if (submitButton) submitButton.textContent = 'Enviando...';
-        responseDiv.innerHTML = '';
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData
-            });
-
-            let result;
-            try {
-                result = await response.json();
-            } catch {
-                throw new Error('Respuesta del servidor no es JSON válido.');
-            }
-
-            // Registrar mensajes de depuración en la consola
-            if (result.debug && Array.isArray(result.debug)) {
-                console.log('Mensajes de depuración del servidor:');
-                result.debug.forEach((msg: any, index: number) => {
-                    console.log(`[${index + 1}] ${msg}`);
-                });
-            }
-
-            if (response.ok && result.success) {
-                console.log('Éxito:', result.message);
-                responseDiv.innerHTML = `
-                    <div style="background-color: #d4edda; color: #155724; padding: 1rem; border-radius: 6px; margin: 1rem 0; border: 1px solid #c3e6cb;">
-                        ✅ ${result.message}
-                    </div>
-                `;
-                form.reset();
-            } else {
-                console.error('Error del servidor:', result.error);
-                const errorMsg = result.error || 'Error desconocido en el servidor.';
-                responseDiv.innerHTML = `
-                    <div style="background-color: #f8d7da; color: #721c24; padding: 1rem; border-radius: 6px; margin: 1rem 0; border: 1px solid #f5c6cb;">
-                        ❌ ${errorMsg}
-                    </div>
-                `;
-            }
-        } catch (error) {
-            console.error('Error de red:', error);
-            responseDiv.innerHTML = `
-                <div style="background-color: #fff3cd; color: #856404; padding: 1rem; border-radius: 6px; margin: 1rem 0; border: 1px solid #ffeaa7;">
-                    ⚠️ Error de conexión. Por favor, inténtalo más tarde.
-                </div>
-            `;
-        } finally {
-            if (submitButton) submitButton.disabled = false;
-            if (submitButton) submitButton.textContent = originalText || 'Enviar';
-        }
-    });
-})();
-</script> -->

@@ -5,8 +5,6 @@ import LinkedIn from "../icons/LinkedIn.astro";
 import Map from "../icons/Map.astro";
 import Tiktok from "../icons/Tiktok.astro";
 import WhatsApp from "../icons/WhatsApp.astro";
-
-
 ---
 
 <footer id="redes" class="footer-section-gsap">
@@ -39,22 +37,27 @@ import WhatsApp from "../icons/WhatsApp.astro";
             </a>
         </li>
         <li class="item footer-item-gsap-5">
-            <a href="https://www.linkedin.com/company/aireseventos/" target="_blank">
+            <a
+                href="https://www.linkedin.com/company/aireseventos/"
+                target="_blank"
+            >
                 <LinkedIn />
                 <p>/airessalon</p>
             </a>
         </li>
         <li class="item footer-item-gsap-6">
-            <a href="https://www.tiktok.com/@aires.salon?refer=creator_embed" target="_blank">
+            <a
+                href="https://www.tiktok.com/@aires.salon?refer=creator_embed"
+                target="_blank"
+            >
                 <Tiktok />
                 <p>@aires.salon</p>
             </a>
         </li>
     </ul>
 
-    <img class="logo footer-logo-gsap" src="images/logo-as-white.png" alt="">
+    <img class="logo footer-logo-gsap" src="images/logo-as-white.png" alt="" />
 </footer>
-
 
 <style>
     #redes {
@@ -71,7 +74,8 @@ import WhatsApp from "../icons/WhatsApp.astro";
         object-fit: cover;
     }
 
-    ul, li {
+    ul,
+    li {
         list-style: none;
         padding: 0;
         margin: 0;
@@ -84,8 +88,8 @@ import WhatsApp from "../icons/WhatsApp.astro";
     }
 
     footer {
-        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                    url('images/footer-bg.webp');
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+            url("/images/footer-bg.webp");
         background-size: cover;
         background-position: center;
         height: 100vh;
@@ -104,7 +108,7 @@ import WhatsApp from "../icons/WhatsApp.astro";
 
         display: flex;
         flex-direction: column;
-        align-items: flex-end;  
+        align-items: flex-end;
 
         gap: calc(var(--space) * 1.2);
 
@@ -114,10 +118,9 @@ import WhatsApp from "../icons/WhatsApp.astro";
 
         outline: 4px solid var(--white);
         border-radius: 100rem 0 0 100rem;
-
     }
 
-    .item > a{
+    .item > a {
         max-width: max-content;
         display: flex;
         align-items: center;
@@ -138,14 +141,13 @@ import WhatsApp from "../icons/WhatsApp.astro";
         gap: calc(var(--space) * 0.5);
     }
 
-
     @media (max-width: 660px) {
         footer {
             gap: calc(var(--space) * 1.5);
         }
         .rounded-container {
             border-radius: 0;
-            max-width: 100%;            
+            max-width: 100%;
             width: 100%;
 
             padding-block: 0;
@@ -155,88 +157,86 @@ import WhatsApp from "../icons/WhatsApp.astro";
             flex-direction: column;
             gap: calc(var(--space) * 1.2);
         }
-        .rounded-container.f-horizontal > .item > a{
+        .rounded-container.f-horizontal > .item > a {
             flex-direction: row-reverse;
         }
-        
-    } 
+    }
 </style>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Animaciones cuando la sección entra en vista
-  document.addEventListener('DOMContentLoaded', () => {
-    // Animar el primer contenedor redondeado (contacto)
-    gsap.from('.footer-rounded-container-gsap-1', {
-      scrollTrigger: {
-        trigger: '.footer-section-gsap',
-        start: 'top 90%',
-        // markers: true, // Descomentar para depuración visual
-      },
-      opacity: 0,
-      x: 100,
-      duration: 1.3,
-      ease: 'power3.out'
-    });
-    
-    // Animar los items del primer contenedor con stagger
-    gsap.from('.footer-item-gsap-1, .footer-item-gsap-2, .footer-item-gsap-3', {
-      scrollTrigger: {
-        trigger: '.footer-rounded-container-gsap-1',
-        start: 'top 85%',
-      },
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      stagger: 0.2,
-      delay: 0.2,
-      ease: 'power3.out'
-    });
-    
-    // Animar el segundo contenedor redondeado (redes sociales)
-    gsap.from('.footer-rounded-container-gsap-2', {
-      scrollTrigger: {
-        trigger: '.footer-rounded-container-gsap-2',
-        start: 'top 90%',
-      },
-      opacity: 0,
-      x: 100,
-      duration: 1.3,
-      delay: 0.3,
-      ease: 'power3.out'
-    });
-    
-    // Animar los items del segundo contenedor con stagger
-    gsap.from('.footer-item-gsap-4, .footer-item-gsap-5, .footer-item-gsap-6', {
-      scrollTrigger: {
-        trigger: '.footer-rounded-container-gsap-2',
-        start: 'top 85%',
-      },
-      opacity: 0,
-      y: 30,
-      duration: 1,
-      stagger: 0.2,
-      delay: 0.2,
-      ease: 'power3.out'
-    });
-    
-    // Animar el logo
-    gsap.from('.footer-logo-gsap', {
-      scrollTrigger: {
-        trigger: '.footer-section-gsap',
-        start: 'top 80%',
-      },
-      opacity: 0,
-      scale: 0.8,
-      duration: 1.2,
-      delay: 0.5,
-      ease: 'power3.out'
-    });
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-    ScrollTrigger.refresh();
-  });
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.addEventListener("DOMContentLoaded", () => {
+        gsap.from(".footer-rounded-container-gsap-1", {
+            scrollTrigger: {
+                trigger: ".footer-section-gsap",
+                start: "top 90%",
+            },
+            opacity: 0,
+            x: 100,
+            duration: 1.3,
+            ease: "power3.out",
+        });
+
+        gsap.from(
+            ".footer-item-gsap-1, .footer-item-gsap-2, .footer-item-gsap-3",
+            {
+                scrollTrigger: {
+                    trigger: ".footer-rounded-container-gsap-1",
+                    start: "top 85%",
+                },
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.2,
+                ease: "power3.out",
+            },
+        );
+
+        gsap.from(".footer-rounded-container-gsap-2", {
+            scrollTrigger: {
+                trigger: ".footer-rounded-container-gsap-2",
+                start: "top 90%",
+            },
+            opacity: 0,
+            x: 100,
+            duration: 1.3,
+            delay: 0.3,
+            ease: "power3.out",
+        });
+
+        gsap.from(
+            ".footer-item-gsap-4, .footer-item-gsap-5, .footer-item-gsap-6",
+            {
+                scrollTrigger: {
+                    trigger: ".footer-rounded-container-gsap-2",
+                    start: "top 85%",
+                },
+                opacity: 0,
+                y: 30,
+                duration: 1,
+                stagger: 0.2,
+                delay: 0.2,
+                ease: "power3.out",
+            },
+        );
+
+        gsap.from(".footer-logo-gsap", {
+            scrollTrigger: {
+                trigger: ".footer-section-gsap",
+                start: "top 80%",
+            },
+            opacity: 0,
+            scale: 0.8,
+            duration: 1.2,
+            delay: 0.5,
+            ease: "power3.out",
+        });
+
+        ScrollTrigger.refresh();
+    });
 </script>
