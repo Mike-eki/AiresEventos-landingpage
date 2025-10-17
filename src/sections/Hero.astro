@@ -4,7 +4,8 @@ import ArrowDown from "../icons/ArrowDown.astro";
 
 <section id="hero">
     <div class="circle-container">
-        <svg width="192" height="192" viewBox="0 0 100 100">
+        <!-- Issue: Solo en Safari, este circulo no esta centrado y se desaliena de la viewbox  -->
+        <!-- <svg width="192" height="192" viewBox="0 0 100 100">
             <defs>
                 <path
                     id="circle"
@@ -21,7 +22,8 @@ import ArrowDown from "../icons/ArrowDown.astro";
                     vida •
                 </textPath>
             </text>
-        </svg>
+        </svg> -->
+        <img class="circle-text-path" src="images/hero-path-text.png" alt="Una imagen de un texto en circulo">
     </div>
     <button id="scroll-button" class="button-hero"><ArrowDown /></button>
     <video autoplay muted loop>
@@ -63,19 +65,25 @@ import ArrowDown from "../icons/ArrowDown.astro";
         }
     }
 
-    text {
+    /*  Issue: Solo en Safari, este circulo no esta centrado y se desaliena de la viewbox  --> */
+    /* text {
         will-change: transform;
         text-rendering: optimizeLegibility;
-        animation: rotate 20s linear infinite;
+        
         transform-origin: center center;
         fill: var(--light-beige);
         font-family: var(--font-switzer-light);
         font-size: 6px;
+    } */
+
+    .circle-text-path {
+        animation: rotate 20s linear infinite;
     }
+
 
     button {
         position: absolute;
-        margin-bottom: 44px; /* medida exacta para que quede centrado en el circulo*/
+        margin-bottom: 44px; /* Medida exacta para que quede centrado en el circulo */
         border-radius: 10rem;
         border: none;
         width: 4rem;
@@ -104,15 +112,6 @@ import ArrowDown from "../icons/ArrowDown.astro";
         z-index: 10;
     }
 
-    /* Añadir prefijos para compatibilidad con WebKit */
-    @supports (-webkit-transform: translate(-50%, -50%)) {
-        .circle-container {
-            /* -webkit-transform: translate(-50%, -50%); */
-        }
-        text {
-            /* -webkit-transform-origin: center center; */
-        }
-    }
 </style>
 
 <script>
@@ -130,7 +129,7 @@ import ArrowDown from "../icons/ArrowDown.astro";
 
                 tl.to(button, {
                     scale: 0.9,
-                    duration: 0.15,
+                    duration: 0.3,
                     ease: "power2.out",
                 })
                     .to(button, {
@@ -141,10 +140,10 @@ import ArrowDown from "../icons/ArrowDown.astro";
                     .to(
                         window,
                         {
-                            duration: 1 /* Ajustar duración para coherencia */,
+                            duration: 0.1 /* Ajustar duración para coherencia */,
                             scrollTo: {
                                 y: "#intro",
-                                offsetY: 80 /* Usar el offset ya establecido */,
+                                offsetY: 50 /* Usar el offset ya establecido */,
                             },
                             ease: "power3.inOut",
                         },
